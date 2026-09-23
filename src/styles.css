@@ -1,0 +1,178 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * CONSELT Design System — Automação Residencial
+ * Palette: #051D3E #093565 #184C77 #2270A1 #42A5D3 #B1D3E1 #FFFFFF #162638
+ * Dark futuristic theme, single direction (no light/dark toggle).
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* CONSELT brand scale */
+  --color-navy-950: var(--navy-950);
+  --color-navy-900: var(--navy-900);
+  --color-navy-800: var(--navy-800);
+  --color-navy-700: var(--navy-700);
+  --color-blue-500: var(--blue-500);
+  --color-blue-400: var(--blue-400);
+  --color-blue-200: var(--blue-200);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-hover: var(--whatsapp-hover);
+
+  --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Brand scale */
+  --navy-950: oklch(0.234 0.07 257);   /* #051D3E */
+  --navy-900: oklch(0.264 0.04 252.2); /* #162638 */
+  --navy-800: oklch(0.33 0.096 254.5); /* #093565 */
+  --navy-700: oklch(0.405 0.09 247.6); /* #184C77 */
+  --blue-500: oklch(0.522 0.107 241.3);/* #2270A1 */
+  --blue-400: oklch(0.683 0.113 232);  /* #42A5D3 */
+  --blue-200: oklch(0.847 0.041 224.7);/* #B1D3E1 */
+
+  --whatsapp: oklch(0.72 0.17 156);
+  --whatsapp-hover: oklch(0.66 0.17 156);
+
+  /* Semantic tokens — background two steps lighter on the palette (#184C77) */
+  --background: var(--blue-200);
+  --foreground: var(--navy-950);
+  --card: oklch(1 0 0 / 0.75);
+  --card-foreground: var(--navy-950);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--navy-950);
+  --primary: var(--blue-500);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: var(--blue-500);
+  --secondary-foreground: oklch(0.98 0.01 224);
+  --muted: oklch(0.847 0.041 224.7 / 0.5);
+  --muted-foreground: var(--navy-800);
+  --accent: var(--blue-500);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.522 0.107 241.3 / 0.25);
+  --input: oklch(0.683 0.113 232 / 0.28);
+  --ring: var(--blue-400);
+
+  /* Effects */
+  --glow-primary: 0 0 48px -12px oklch(0.683 0.113 232 / 0.55);
+  --gradient-brand: linear-gradient(120deg, var(--navy-800), var(--blue-500));
+  --gradient-hero: radial-gradient(ellipse 80% 55% at 50% -10%, oklch(0.683 0.113 232 / 0.15), transparent 70%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: linear-gradient(180deg, #FFFFFF 0%, var(--blue-200) 100%) fixed;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* ---- Motion ---- */
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+@keyframes sheen {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-float-soft { animation: float-soft 6s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 3.2s ease-in-out infinite; }
+
+/* ---- Utilities ---- */
+@utility glow-accent {
+  box-shadow: var(--glow-primary);
+}
+
+@utility text-gradient-brand {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-grid {
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--color-blue-400) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--color-blue-400) 7%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+@utility bg-hero-aurora {
+  background:
+    var(--gradient-hero),
+    radial-gradient(ellipse 45% 35% at 85% 15%, oklch(0.405 0.09 247.6 / 0.35), transparent 70%);
+}
+
+@utility card-sheen {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 30%, color-mix(in oklab, var(--color-blue-200) 10%, transparent) 50%, transparent 70%);
+    background-size: 200% 100%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  &:hover::after {
+    opacity: 1;
+    animation: sheen 1.6s ease;
+  }
+}
