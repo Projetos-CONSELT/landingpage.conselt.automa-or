@@ -285,20 +285,20 @@ function Index() {
       </header>
 
       {/* ============ BLOCO 1 · HERO ============ */}
-      <section className="relative overflow-hidden bg-hero-aurora pt-16">
+      <section className="relative overflow-hidden bg-navy-950 pt-16">
         <div className="bg-grid absolute inset-0 opacity-60 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_20%,black,transparent)]" />
         <div className="relative mx-auto max-w-6xl px-4 pb-16 pt-14 sm:px-6 sm:pb-24 sm:pt-20">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="font-display text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-6xl">
+            <h1 className="font-display text-4xl font-bold leading-[1.1] tracking-tight text-primary-foreground sm:text-6xl">
               Automação residencial
               <br />
-              <span className="text-gradient-brand">&amp; comercial</span>
+              <span className="text-blue-400">&amp; comercial</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-xl font-display text-xl font-semibold leading-snug text-navy-800 sm:text-2xl">
+            <p className="mx-auto mt-6 max-w-xl font-display text-xl font-semibold leading-snug text-blue-200 sm:text-2xl">
               Sua casa ou escritório. Inteligentes em cada detalhe.
             </p>
-            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Iluminação, clima e segurança no seu controle — <strong className="font-semibold text-foreground">sem quebrar paredes.</strong>
+            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-blue-200/80 sm:text-lg">
+              Iluminação, clima e segurança no seu controle — <strong className="font-semibold text-primary-foreground">sem quebrar paredes.</strong>
             </p>
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
@@ -312,7 +312,7 @@ function Index() {
               </a>
               <a
                 href="#sobre"
-                className="inline-flex w-full items-center justify-center rounded-full border border-primary/40 bg-transparent px-8 py-3.5 text-base font-semibold text-navy-800 transition-colors hover:border-primary hover:text-primary sm:w-auto"
+                className="inline-flex w-full items-center justify-center rounded-full border border-blue-400/50 bg-transparent px-8 py-3.5 text-base font-semibold text-blue-200 transition-colors hover:border-blue-400 hover:text-primary-foreground sm:w-auto"
               >
                 Conhecer a automação
               </a>
