@@ -4,6 +4,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ConseltLogo } from "@/components/conselt-logo";
 import heroCameraPhone from "@/assets/hero-camera-phone.jpg";
 import ctaCamera from "@/assets/cta-camera.jpg";
+import livingLighting from "@/assets/living-lighting.jpg";
+import officeAutomation from "@/assets/office-automation.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -388,6 +390,20 @@ function Index() {
                   </span>
                 ))}
               </div>
+            </div>
+            <div className="mt-12 grid gap-5 sm:grid-cols-2">
+              {[
+                { src: livingLighting, label: "Residencial", text: "Iluminação e cenas no toque" },
+                { src: officeAutomation, label: "Comercial", text: "Luz e clima automáticos no escritório" },
+              ].map((img) => (
+                <figure key={img.label} className="group relative overflow-hidden rounded-2xl border border-border">
+                  <img src={img.src} alt={img.text} loading="lazy" width={1600} height={1200} className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-950/90 to-transparent p-5 text-left">
+                    <span className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-400">{img.label}</span>
+                    <p className="mt-1 font-display text-lg font-bold text-primary-foreground">{img.text}</p>
+                  </figcaption>
+                </figure>
+              ))}
             </div>
           </div>
         </div>
