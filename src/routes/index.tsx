@@ -5,7 +5,7 @@ import { ConseltLogo } from "@/components/conselt-logo";
 import heroCameraPhone from "@/assets/hero-camera-phone.jpg";
 import ctaCamera from "@/assets/cta-camera.jpg";
 import livingLighting from "@/assets/living-lighting.jpg";
-import officeAutomation from "@/assets/office-automation.jpg";
+import officeNatural from "@/assets/office-natural.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -359,7 +359,8 @@ function Index() {
 
       {/* ============ BLOCO 3 · O QUE É AUTOMAÇÃO ============ */}
       <section id="sobre" className="relative scroll-mt-20 py-20 sm:py-28">
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-blue-400/10 to-transparent" />
+        <img src={livingLighting} alt="" aria-hidden="true" loading="lazy" width={1600} height={1200} className="absolute inset-0 h-full w-full object-cover" />
+        <div className="pointer-events-none absolute inset-0 bg-background/85" />
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mx-auto max-w-4xl">
             <div className="text-center">
@@ -390,20 +391,6 @@ function Index() {
                   </span>
                 ))}
               </div>
-            </div>
-            <div className="mt-12 grid gap-5 sm:grid-cols-2">
-              {[
-                { src: livingLighting, label: "Residencial", text: "Iluminação e cenas no toque" },
-                { src: officeAutomation, label: "Comercial", text: "Luz e clima automáticos no escritório" },
-              ].map((img) => (
-                <figure key={img.label} className="group relative overflow-hidden rounded-2xl border border-border">
-                  <img src={img.src} alt={img.text} loading="lazy" width={1600} height={1200} className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-950/90 to-transparent p-5 text-left">
-                    <span className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-400">{img.label}</span>
-                    <p className="mt-1 font-display text-lg font-bold text-primary-foreground">{img.text}</p>
-                  </figcaption>
-                </figure>
-              ))}
             </div>
           </div>
         </div>
@@ -444,7 +431,8 @@ function Index() {
 
       {/* ============ BLOCO 5 · PROVAS DE CONFIANÇA ============ */}
       <section className="relative overflow-hidden py-20 sm:py-28">
-        <div className="pointer-events-none absolute inset-0 bg-hero-aurora opacity-50" />
+        <img src={officeNatural} alt="" aria-hidden="true" loading="lazy" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover" />
+        <div className="pointer-events-none absolute inset-0 bg-background/85" />
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
           <SectionHeading
             eyebrow="Provas de confiança"
