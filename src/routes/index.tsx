@@ -5,9 +5,9 @@ import { ConseltLogo } from "@/components/conselt-logo";
 import heroCameraPhone from "@/assets/hero-camera-phone.jpg";
 import ctaCamera from "@/assets/cta-camera.jpg";
 import livingLighting from "@/assets/living-lighting.jpg";
-import officeNatural from "@/assets/office-natural.jpg";
 import modularImg from "@/assets/modular.png.asset.json";
 import sensorImg from "@/assets/sensor.png.asset.json";
+import ufuImg from "@/assets/ufu-engenharia.png.asset.json";
 import luminoImg from "@/assets/luminotecnica.png.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -349,7 +349,7 @@ function Index() {
                 className="card-sheen group relative min-h-72 overflow-hidden rounded-2xl border border-border bg-card p-7 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-primary/40 hover:glow-accent"
               >
                 <img src={item.image} alt="" aria-hidden="true" loading="lazy" className="pointer-events-none absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/35 via-white/70 to-white/90" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/0 via-white/35 to-white/75" />
                 <div className="relative">
                 <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-navy-950 text-white transition-colors group-hover:bg-navy-800">
                   <item.icon className="h-6 w-6" />
@@ -441,8 +441,8 @@ function Index() {
 
       {/* ============ BLOCO 5 · PROVAS DE CONFIANÇA ============ */}
       <section className="relative overflow-hidden py-20 sm:py-28">
-        <img src={officeNatural} alt="" aria-hidden="true" loading="lazy" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover" />
-        <div className="pointer-events-none absolute inset-0 bg-background/60" />
+        <img src={ufuImg.url} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="pointer-events-none absolute inset-0 bg-background/35" />
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
           <SectionHeading
             eyebrow="Provas de confiança"
