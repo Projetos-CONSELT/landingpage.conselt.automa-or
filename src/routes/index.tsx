@@ -5,7 +5,7 @@ import { ConseltLogo } from "@/components/conselt-logo";
 import heroCameraPhone from "@/assets/hero-camera-phone.jpg";
 import ctaCamera from "@/assets/cta-camera.jpg";
 import livingLighting from "@/assets/living-lighting.jpg";
-import officeAutomation from "@/assets/office-automation.jpg";
+import officeNatural from "@/assets/office-natural.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
