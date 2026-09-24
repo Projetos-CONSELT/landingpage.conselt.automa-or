@@ -2,6 +2,8 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { ConseltLogo } from "@/components/conselt-logo";
+import heroCameraPhone from "@/assets/hero-camera-phone.jpg";
+import ctaCamera from "@/assets/cta-camera.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -286,7 +288,9 @@ function Index() {
 
       {/* ============ BLOCO 1 · HERO ============ */}
       <section className="relative overflow-hidden bg-navy-950 pt-16">
-        <div className="bg-grid absolute inset-0 opacity-60 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_20%,black,transparent)]" />
+        <img src={heroCameraPhone} alt="" aria-hidden="true" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover object-center opacity-45" />
+        <div className="absolute inset-0 bg-navy-950/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-navy-950/70" />
         <div className="relative mx-auto max-w-6xl px-4 pb-16 pt-14 sm:px-6 sm:pb-24 sm:pt-20">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="font-display text-4xl font-bold leading-[1.1] tracking-tight text-primary-foreground sm:text-6xl">
@@ -523,7 +527,8 @@ function Index() {
 
       {/* ============ BLOCO 7 · CHAMADA FINAL (WHATSAPP) ============ */}
       <section className="relative overflow-hidden bg-navy-950 py-20 sm:py-28">
-        <div className="bg-grid absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_60%_70%_at_50%_50%,black,transparent)]" />
+        <img src={ctaCamera} alt="" aria-hidden="true" loading="lazy" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover opacity-40" />
+        <div className="absolute inset-0 bg-navy-950/65" />
         <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
           <ConseltLogo className="animate-float-soft mx-auto h-20 w-auto" />
           <h2 className="mt-8 font-display text-3xl font-bold leading-tight text-white sm:text-5xl">
