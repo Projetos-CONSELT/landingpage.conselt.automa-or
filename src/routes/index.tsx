@@ -290,9 +290,9 @@ function Index() {
 
       {/* ============ BLOCO 1 · HERO ============ */}
       <section className="relative overflow-hidden bg-navy-950 pt-16">
-        <img src={heroCameraPhone} alt="" aria-hidden="true" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover object-center opacity-45" />
-        <div className="absolute inset-0 bg-navy-950/60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-navy-950/70" />
+        <img src={heroCameraPhone} alt="" aria-hidden="true" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover object-center opacity-80" />
+        <div className="absolute inset-0 bg-navy-950/35" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-transparent to-navy-950/50" />
         <div className="relative mx-auto max-w-6xl px-4 pb-16 pt-14 sm:px-6 sm:pb-24 sm:pt-20">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="font-display text-4xl font-bold leading-[1.1] tracking-tight text-primary-foreground sm:text-6xl">
@@ -360,7 +360,7 @@ function Index() {
       {/* ============ BLOCO 3 · O QUE É AUTOMAÇÃO ============ */}
       <section id="sobre" className="relative scroll-mt-20 py-20 sm:py-28">
         <img src={livingLighting} alt="" aria-hidden="true" loading="lazy" width={1600} height={1200} className="absolute inset-0 h-full w-full object-cover" />
-        <div className="pointer-events-none absolute inset-0 bg-background/85" />
+        <div className="pointer-events-none absolute inset-0 bg-background/60" />
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mx-auto max-w-4xl">
             <div className="text-center">
@@ -432,7 +432,7 @@ function Index() {
       {/* ============ BLOCO 5 · PROVAS DE CONFIANÇA ============ */}
       <section className="relative overflow-hidden py-20 sm:py-28">
         <img src={officeNatural} alt="" aria-hidden="true" loading="lazy" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover" />
-        <div className="pointer-events-none absolute inset-0 bg-background/85" />
+        <div className="pointer-events-none absolute inset-0 bg-background/60" />
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
           <SectionHeading
             eyebrow="Provas de confiança"
@@ -531,8 +531,8 @@ function Index() {
 
       {/* ============ BLOCO 7 · CHAMADA FINAL (WHATSAPP) ============ */}
       <section className="relative overflow-hidden bg-navy-950 py-20 sm:py-28">
-        <img src={ctaCamera} alt="" aria-hidden="true" loading="lazy" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover opacity-40" />
-        <div className="absolute inset-0 bg-navy-950/65" />
+        <img src={ctaCamera} alt="" aria-hidden="true" loading="lazy" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover opacity-75" />
+        <div className="absolute inset-0 bg-navy-950/45" />
         <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
           <ConseltLogo className="animate-float-soft mx-auto h-20 w-auto" />
           <h2 className="mt-8 font-display text-3xl font-bold leading-tight text-white sm:text-5xl">
