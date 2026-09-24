@@ -6,6 +6,9 @@ import heroCameraPhone from "@/assets/hero-camera-phone.jpg";
 import ctaCamera from "@/assets/cta-camera.jpg";
 import livingLighting from "@/assets/living-lighting.jpg";
 import officeNatural from "@/assets/office-natural.jpg";
+import modularImg from "@/assets/modular.png.asset.json";
+import sensorImg from "@/assets/sensor.png.asset.json";
+import luminoImg from "@/assets/luminotecnica.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -214,18 +217,21 @@ function Index() {
   const diferencialItems = [
     {
       icon: IconModules,
+      image: modularImg.url,
       title: "Sistema modular",
       description:
         "Comece pelo essencial e amplie ambiente por ambiente, sem retrabalho.",
     },
     {
       icon: IconPresence,
+      image: sensorImg.url,
       title: "Sensor de presença real",
       description:
         "Detecta pessoas, não apenas movimento, e aciona luz e clima com precisão.",
     },
     {
       icon: IconLight,
+      image: luminoImg.url,
       title: "Engenharia luminotécnica",
       description:
         "Luz planejada para conforto, valorização do ambiente e eficiência.",
@@ -340,8 +346,11 @@ function Index() {
             {diferencialItems.map((item) => (
               <div
                 key={item.title}
-                className="card-sheen group rounded-2xl border border-border bg-card p-7 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-primary/40 hover:glow-accent"
+                className="card-sheen group relative min-h-72 overflow-hidden rounded-2xl border border-border bg-card p-7 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-primary/40 hover:glow-accent"
               >
+                <img src={item.image} alt="" aria-hidden="true" loading="lazy" className="pointer-events-none absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/35 via-white/70 to-white/90" />
+                <div className="relative">
                 <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-navy-950 text-white transition-colors group-hover:bg-navy-800">
                   <item.icon className="h-6 w-6" />
                 </div>
@@ -351,6 +360,7 @@ function Index() {
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   {item.description}
                 </p>
+                </div>
               </div>
             ))}
           </div>
