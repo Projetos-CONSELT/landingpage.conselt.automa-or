@@ -159,21 +159,41 @@ function SectionHeading({
   eyebrow,
   title,
   subtitle,
+  dark = false,
 }: {
   eyebrow: string;
   title: string;
   subtitle?: string;
+  dark?: boolean;
 }) {
   return (
     <div className="mx-auto max-w-2xl text-center">
-      <span className="inline-block rounded-full border border-navy-950 bg-navy-950 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-blue-200">
+      <span
+        className={
+          dark
+            ? "inline-block rounded-full border border-white/25 bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-blue-200"
+            : "inline-block rounded-full border border-navy-950 bg-navy-950 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-blue-200"
+        }
+      >
         {eyebrow}
       </span>
-      <h2 className="mt-5 font-display text-3xl font-bold leading-tight text-foreground sm:text-4xl">
+      <h2
+        className={
+          "mt-5 font-display text-3xl font-bold leading-tight sm:text-4xl " +
+          (dark ? "text-white" : "text-foreground")
+        }
+      >
         {title}
       </h2>
       {subtitle ? (
-        <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">{subtitle}</p>
+        <p
+          className={
+            "mt-4 text-base leading-relaxed sm:text-lg " +
+            (dark ? "text-blue-200/85" : "text-muted-foreground")
+          }
+        >
+          {subtitle}
+        </p>
       ) : null}
     </div>
   );
@@ -335,29 +355,33 @@ function Index() {
       </section>
 
       {/* ============ BLOCO 2 · DIFERENCIAIS ============ */}
-      <section className="relative py-20 sm:py-28">
+      <section
+        className="relative py-20 sm:py-28"
+        style={{ background: "linear-gradient(165deg, #051D3E 0%, #093565 100%)" }}
+      >
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <SectionHeading
             eyebrow="Nossos diferenciais"
             title="Tecnologia que faz diferença de verdade"
             subtitle="Engenharia e inteligência para um sistema que cresce com você."
+            dark
           />
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {diferencialItems.map((item) => (
               <div
                 key={item.title}
-                className="card-sheen group relative min-h-72 overflow-hidden rounded-2xl border border-border bg-card p-7 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-primary/40 hover:glow-accent"
+                className="card-sheen group relative min-h-72 overflow-hidden rounded-2xl border border-white/15 bg-card p-7 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-blue-400/50 hover:glow-accent"
               >
                 <img src={item.image} alt="" aria-hidden="true" loading="lazy" className="pointer-events-none absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/0 via-white/35 to-white/75" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 via-white/45 to-white/90" />
                 <div className="relative">
                 <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-navy-950 text-white transition-colors group-hover:bg-navy-800">
                   <item.icon className="h-6 w-6" />
                 </div>
-                <h3 className="mt-5 font-display text-xl font-semibold text-foreground">
+                <h3 className="mt-5 font-display text-xl font-semibold text-navy-950 [text-shadow:0_1px_3px_rgba(255,255,255,0.9)]">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-3 text-sm font-medium leading-relaxed text-navy-900 [text-shadow:0_1px_2px_rgba(255,255,255,0.85)]">
                   {item.description}
                 </p>
                 </div>
