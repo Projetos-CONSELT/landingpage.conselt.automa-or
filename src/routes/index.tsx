@@ -167,19 +167,19 @@ function SectionHeading({
   dark?: boolean;
 }) {
   return (
-    <div className="mx-auto max-w-2xl text-center">
+    <div className="max-w-2xl">
       <span
         className={
           dark
-            ? "inline-block rounded-full border border-white/25 bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-blue-200"
-            : "inline-block rounded-full border border-navy-950 bg-navy-950 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-blue-200"
+            ? "inline-flex items-center border-l-2 border-blue-400 pl-3 text-xs font-bold uppercase text-blue-200"
+            : "inline-flex items-center border-l-2 border-blue-500 pl-3 text-xs font-bold uppercase text-blue-500"
         }
       >
         {eyebrow}
       </span>
       <h2
         className={
-          "mt-5 font-display text-3xl font-bold leading-tight sm:text-4xl " +
+          "mt-5 font-display text-3xl font-extrabold leading-tight sm:text-4xl " +
           (dark ? "text-white" : "text-foreground")
         }
       >
@@ -292,21 +292,27 @@ function Index() {
   ];
 
   return (
-    <div className="min-h-screen font-sans text-foreground">
+    <div className="min-h-screen bg-background font-sans text-foreground">
       {/* ============ CABEÇALHO ============ */}
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-white/80 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
+        <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-5 sm:px-8">
           <a href="#" className="flex items-center gap-3">
             <ConseltLogo className="h-9 w-auto" />
-            <span className="font-display text-lg font-bold tracking-[0.18em] text-foreground">
+            <span className="font-display text-lg font-extrabold text-foreground">
               CONSELT
             </span>
           </a>
+          <nav className="hidden items-center gap-8 text-sm font-semibold text-muted-foreground md:flex" aria-label="Navegação principal">
+            <a href="#diferenciais" className="transition-colors hover:text-primary">Diferenciais</a>
+            <a href="#sobre" className="transition-colors hover:text-primary">Automação</a>
+            <a href="#confianca" className="transition-colors hover:text-primary">Experiência</a>
+            <a href="#duvidas" className="transition-colors hover:text-primary">Dúvidas</a>
+          </nav>
           <a
             href={waLink(WA_DEFAULT_MESSAGE)}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-navy-950 px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-navy-800 sm:px-5"
+            className="inline-flex items-center gap-2 rounded-sm bg-navy-950 px-4 py-2.5 text-sm font-bold text-primary-foreground transition-colors hover:bg-navy-800 sm:px-5"
           >
             <IconWhatsApp className="h-4 w-4" />
             Fale conosco
@@ -315,73 +321,78 @@ function Index() {
       </header>
 
       {/* ============ BLOCO 1 · HERO ============ */}
-      <section className="relative overflow-hidden bg-navy-950 pt-16">
-        <img src={heroCameraPhone} alt="" aria-hidden="true" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover object-center opacity-80" />
-        <div className="absolute inset-0 bg-navy-950/35" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-transparent to-navy-950/50" />
-        <div className="relative mx-auto max-w-6xl px-4 pb-16 pt-14 sm:px-6 sm:pb-24 sm:pt-20">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="font-display text-4xl font-bold leading-[1.1] tracking-tight text-primary-foreground sm:text-6xl">
-              Automação residencial
-              <br />
-              <span className="text-blue-400">&amp; comercial</span>
+      <section className="relative overflow-hidden bg-navy-950 pt-18">
+        <div className="technical-lines absolute inset-0" />
+        <div className="relative mx-auto grid min-h-[690px] max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.02fr_.98fr] lg:py-24">
+          <div className="animate-rise-in relative z-10 max-w-2xl">
+            <span className="inline-flex items-center border-l-2 border-blue-400 pl-3 text-xs font-bold uppercase text-blue-200">Engenharia de precisão</span>
+            <h1 className="mt-7 font-display text-4xl font-extrabold leading-[1.08] text-primary-foreground sm:text-6xl">
+              Automação residencial e comercial
             </h1>
-            <p className="mx-auto mt-6 max-w-xl font-display text-xl font-semibold leading-snug text-blue-200 sm:text-2xl">
+            <p className="mt-6 max-w-xl font-display text-xl font-bold leading-snug text-blue-200 sm:text-2xl">
               Sua casa ou escritório. Inteligentes em cada detalhe.
             </p>
-            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-blue-200/80 sm:text-lg">
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-blue-200/85 sm:text-lg">
               Iluminação, clima e segurança no seu controle — <strong className="font-semibold text-primary-foreground">sem quebrar paredes.</strong>
             </p>
-            <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
                 href={waLink(WA_DEFAULT_MESSAGE)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-8 py-3.5 text-base font-bold text-primary-foreground transition-all hover:bg-primary/90 hover:glow-accent sm:w-auto"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-primary px-8 py-3.5 text-base font-bold text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-blue-400 sm:w-auto"
               >
                 <IconWhatsApp className="h-5 w-5" />
                 Quero automatizar meu espaço
               </a>
               <a
                 href="#sobre"
-                className="inline-flex w-full items-center justify-center rounded-full border border-blue-400/50 bg-transparent px-8 py-3.5 text-base font-semibold text-blue-200 transition-colors hover:border-blue-400 hover:text-primary-foreground sm:w-auto"
+                className="inline-flex w-full items-center justify-center rounded-sm border border-blue-200/40 bg-transparent px-8 py-3.5 text-base font-semibold text-blue-200 transition-colors hover:border-blue-200 hover:text-primary-foreground sm:w-auto"
               >
                 Conhecer a automação
               </a>
             </div>
           </div>
-
+          <div className="relative lg:pl-8">
+            <div className="relative overflow-hidden rounded-sm border border-blue-200/25 bg-navy-800">
+              <img src={heroCameraPhone} alt="Acompanhamento de câmeras de segurança pelo celular" width={1920} height={1088} className="h-[410px] w-full object-cover object-center sm:h-[540px]" />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-950/90 to-transparent p-6 pt-20">
+                <p className="max-w-xs text-sm font-semibold text-primary-foreground">Controle e acompanhe seu espaço onde estiver.</p>
+              </div>
+            </div>
+            <div className="absolute -bottom-5 -left-2 border-l-4 border-blue-400 bg-background p-5 shadow-xl sm:-left-5">
+              <span className="text-3xl font-extrabold text-navy-950">32 anos</span>
+              <p className="mt-1 text-xs font-semibold text-muted-foreground">de experiência em engenharia elétrica</p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ============ BLOCO 2 · DIFERENCIAIS ============ */}
-      <section
-        className="relative py-20 sm:py-28"
-        style={{ background: "linear-gradient(165deg, #051D3E 0%, #093565 100%)" }}
-      >
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <section id="diferenciais" className="relative scroll-mt-20 bg-navy-800 py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeading
             eyebrow="Nossos diferenciais"
             title="Tecnologia que faz diferença de verdade"
             subtitle="Engenharia e inteligência para um sistema que cresce com você."
             dark
           />
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
+          <div className="mt-14 grid gap-5 md:grid-cols-3">
             {diferencialItems.map((item) => (
               <div
                 key={item.title}
-                className="card-sheen group relative min-h-72 overflow-hidden rounded-2xl border border-white/15 bg-card p-7 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-blue-400/50 hover:glow-accent"
+                className="group relative min-h-80 overflow-hidden rounded-sm border border-blue-200/25 bg-navy-950 p-7 transition-transform hover:-translate-y-1"
               >
                 <img src={item.image} alt="" aria-hidden="true" loading="lazy" className="pointer-events-none absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 via-white/45 to-white/90" />
-                <div className="relative">
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-navy-950 text-white transition-colors group-hover:bg-navy-800">
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-navy-950/5 via-navy-950/25 to-navy-950/95" />
+                <div className="absolute inset-x-0 bottom-0 z-10 p-7">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-sm border border-blue-200/30 bg-navy-950/90 text-blue-200">
                   <item.icon className="h-6 w-6" />
                 </div>
-                <h3 className="mt-5 font-display text-xl font-semibold text-navy-950 [text-shadow:0_1px_3px_rgba(255,255,255,0.9)]">
+                <h3 className="mt-5 font-display text-xl font-bold text-primary-foreground">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-sm font-medium leading-relaxed text-navy-900 [text-shadow:0_1px_2px_rgba(255,255,255,0.85)]">
+                <p className="mt-3 text-sm font-medium leading-relaxed text-blue-200">
                   {item.description}
                 </p>
                 </div>
@@ -392,23 +403,23 @@ function Index() {
       </section>
 
       {/* ============ BLOCO 3 · O QUE É AUTOMAÇÃO ============ */}
-      <section id="sobre" className="relative scroll-mt-20 py-20 sm:py-28">
+      <section id="sobre" className="relative scroll-mt-20 overflow-hidden py-20 sm:py-28">
         <img src={livingLighting} alt="" aria-hidden="true" loading="lazy" width={1600} height={1200} className="absolute inset-0 h-full w-full object-cover" />
-        <div className="pointer-events-none absolute inset-0 bg-background/60" />
-        <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="mx-auto max-w-4xl">
-            <div className="text-center">
+        <div className="pointer-events-none absolute inset-0 bg-background/80" />
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
+          <div className="hidden min-h-72 border-l border-primary/30 lg:block" />
+          <div>
               <SectionHeading
                 eyebrow="O que é automação residencial?"
                 title="Sua casa e seu escritório trabalhando por você"
                 subtitle=""
               />
-              <div className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground">
+               <div className="mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground">
                 <p>
                   Conecte <strong className="font-semibold text-foreground">luzes, climatização, cortinas e segurança</strong> em um só sistema. Controle pelo celular, por voz ou deixe sua rotina acontecer automaticamente.
                 </p>
               </div>
-              <div className="mt-8 flex flex-wrap justify-center gap-2.5">
+              <div className="mt-8 grid gap-px border border-border bg-border sm:grid-cols-2">
                 {[
                   "Iluminação inteligente",
                   "Clima e ar-condicionado",
@@ -419,20 +430,19 @@ function Index() {
                 ].map((chip) => (
                   <span
                     key={chip}
-                    className="rounded-full border border-navy-950 bg-navy-950 px-4 py-1.5 text-sm font-medium text-white"
+                    className="bg-background px-4 py-3 text-sm font-semibold text-foreground"
                   >
                     {chip}
                   </span>
                 ))}
               </div>
-            </div>
           </div>
         </div>
       </section>
 
       {/* ============ BLOCO 4 · BENEFÍCIOS ============ */}
-      <section className="relative py-20 sm:py-28">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <section className="relative bg-muted py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeading
             eyebrow="Por que a CONSELT"
             title="Benefícios de contratar a CONSELT"
@@ -442,13 +452,9 @@ function Index() {
             {beneficioItems.map((item, index) => (
               <div
                 key={item.title}
-                className={
-                  index === 0
-                    ? "card-sheen rounded-2xl border border-primary/40 bg-card p-7 backdrop-blur-sm transition-all hover:-translate-y-1 hover:glow-accent sm:col-span-2 lg:col-span-1"
-                    : "card-sheen rounded-2xl border border-border bg-card p-7 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-primary/40 hover:glow-accent"
-                }
+                 className={index === 0 ? "rounded-sm border-t-4 border-primary bg-card p-7 shadow-sm sm:col-span-2 lg:col-span-1" : "rounded-sm border border-border bg-card p-7 shadow-sm"}
               >
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-navy-950 text-white">
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-sm bg-navy-950 text-primary-foreground">
                   <item.icon className="h-6 w-6" />
                 </div>
                 <h3 className="mt-5 font-display text-lg font-semibold text-foreground">
@@ -464,25 +470,25 @@ function Index() {
       </section>
 
       {/* ============ BLOCO 5 · PROVAS DE CONFIANÇA ============ */}
-      <section className="relative overflow-hidden py-20 sm:py-28">
+      <section id="confianca" className="relative scroll-mt-20 overflow-hidden py-20 sm:py-28">
         <img src={ufuImg.url} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="pointer-events-none absolute inset-0 bg-background/35" />
-        <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="pointer-events-none absolute inset-0 bg-background/70" />
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeading
             eyebrow="Provas de confiança"
             title="Tradição e excelência em engenharia"
             subtitle="Experiência consolidada com o rigor técnico da engenharia UFU."
           />
           <div className="mt-14 grid gap-6 md:grid-cols-3">
-            <div className="card-sheen rounded-2xl border border-navy-950 bg-navy-950 p-8 text-center text-white">
+            <div className="flex min-h-56 flex-col items-center justify-center rounded-sm border border-navy-950 bg-navy-950 p-8 text-center text-primary-foreground">
               <span className="font-display text-5xl font-bold text-blue-400">32</span>
               <span className="font-display text-2xl font-bold text-blue-200"> anos</span>
               <p className="mt-3 text-sm leading-relaxed text-blue-200/80">
                 de experiência em soluções de engenharia elétrica.
               </p>
             </div>
-            <div className="rounded-2xl border border-border bg-card p-8 text-center backdrop-blur-sm">
-              <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15 text-primary">
+            <div className="rounded-sm border border-border bg-card p-8 text-center shadow-sm">
+              <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-sm bg-muted text-primary">
                 <IconAward className="h-6 w-6" />
               </div>
               <h3 className="mt-4 font-display text-lg font-semibold text-foreground">
@@ -492,8 +498,8 @@ function Index() {
                 Qualidade e excelência da Universidade Federal de Uberlândia.
               </p>
             </div>
-            <div className="rounded-2xl border border-border bg-card p-8 text-center backdrop-blur-sm">
-              <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15 text-primary">
+            <div className="rounded-sm border border-border bg-card p-8 text-center shadow-sm">
+              <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-sm bg-muted text-primary">
                 <IconShield className="h-6 w-6" />
               </div>
               <h3 className="mt-4 font-display text-lg font-semibold text-foreground">
@@ -508,13 +514,13 @@ function Index() {
       </section>
 
       {/* ============ BLOCO 6 · FAQ ============ */}
-      <section className="relative py-20 sm:py-28">
+      <section id="duvidas" className="relative scroll-mt-20 py-20 sm:py-28">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <SectionHeading
             eyebrow="Perguntas frequentes"
             title="Tire suas dúvidas antes de falar com a gente"
           />
-          <div className="mt-12 space-y-3">
+          <div className="mt-12 divide-y divide-border border-y border-border">
             {faqs.map((faq, index) => {
               const isOpen = openFaq === index;
               return (
@@ -522,8 +528,8 @@ function Index() {
                   key={faq.question}
                   className={
                     isOpen
-                      ? "rounded-xl border border-primary/40 bg-card backdrop-blur-sm transition-colors"
-                      : "rounded-xl border border-border bg-card backdrop-blur-sm transition-colors hover:border-primary/30"
+                      ? "border-l-2 border-primary bg-muted transition-colors"
+                      : "border-l-2 border-transparent bg-background transition-colors hover:bg-muted"
                   }
                 >
                   <button
@@ -566,9 +572,10 @@ function Index() {
       {/* ============ BLOCO 7 · CHAMADA FINAL (WHATSAPP) ============ */}
       <section className="relative overflow-hidden bg-navy-950 py-20 sm:py-28">
         <img src={ctaCamera} alt="" aria-hidden="true" loading="lazy" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover opacity-75" />
-        <div className="absolute inset-0 bg-navy-950/45" />
+        <div className="absolute inset-0 bg-navy-950/70" />
+        <div className="technical-lines absolute inset-0" />
         <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <ConseltLogo className="animate-float-soft mx-auto h-20 w-auto" />
+          <ConseltLogo className="mx-auto h-20 w-auto" />
           <h2 className="mt-8 font-display text-3xl font-bold leading-tight text-white sm:text-5xl">
             Pronto para viver o <span className="text-blue-400">futuro</span> hoje?
           </h2>
@@ -580,7 +587,7 @@ function Index() {
               href={waLink(WA_DEFAULT_MESSAGE)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 rounded-full bg-whatsapp px-10 py-4 text-lg font-bold text-navy-950 transition-all hover:bg-whatsapp-hover hover:glow-accent"
+             className="inline-flex items-center justify-center gap-3 rounded-sm bg-whatsapp px-10 py-4 text-lg font-bold text-navy-950 transition-all hover:-translate-y-0.5 hover:bg-whatsapp-hover"
             >
               <IconWhatsApp className="h-6 w-6" />
               Chamar no WhatsApp
@@ -590,11 +597,11 @@ function Index() {
       </section>
 
       {/* ============ RODAPÉ ============ */}
-      <footer className="border-t border-border/60 bg-white/60 py-10">
+      <footer className="border-t border-border bg-background py-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-5 px-4 text-center sm:px-6">
           <div className="flex items-center gap-3">
             <ConseltLogo className="h-8 w-auto" />
-            <span className="font-display text-base font-bold tracking-[0.18em] text-foreground">
+            <span className="font-display text-base font-extrabold text-foreground">
               CONSELT
             </span>
           </div>
