@@ -367,18 +367,27 @@ function Index() {
               </a>
             </div>
           </div>
-          <div className="relative lg:pl-8">
-            <div className="relative overflow-hidden rounded-sm border border-blue-200/25 bg-navy-800">
-              <img src={heroCameraPhone} alt="Acompanhamento de câmeras de segurança pelo celular" width={1920} height={1088} className="h-[410px] w-full object-cover object-center sm:h-[540px]" />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-950/90 to-transparent p-6 pt-20">
-                <p className="max-w-xs text-sm font-semibold text-primary-foreground">Controle e acompanhe seu espaço onde estiver.</p>
+          <div className="relative z-10 flex justify-center lg:justify-end">
+            {/* Destaque 32 anos */}
+            <div className="animate-rise-in relative border-l-4 border-blue-400 bg-background p-8 shadow-2xl sm:p-10">
+              <span className="absolute right-6 top-6 h-2 w-2 rotate-45 bg-blue-400" aria-hidden="true" />
+              <span className="text-xs font-bold uppercase tracking-wide text-primary">Tradição comprovada</span>
+              <div className="mt-4 flex items-end gap-4">
+                <span className="font-display text-8xl font-extrabold leading-none text-navy-950 sm:text-9xl">32</span>
+                <div className="pb-2">
+                  <span className="block font-display text-3xl font-extrabold leading-none text-navy-800">anos</span>
+                  <span className="mt-1 block text-sm font-semibold text-muted-foreground">de experiência</span>
+                </div>
               </div>
-            </div>
-            <div className="absolute -bottom-5 -left-2 border-l-4 border-blue-400 bg-background p-5 shadow-xl sm:-left-5">
-              <span className="text-3xl font-extrabold text-navy-950">32 anos</span>
-              <p className="mt-1 text-xs font-semibold text-muted-foreground">de experiência em engenharia elétrica</p>
+              <p className="mt-5 text-base font-semibold leading-snug text-foreground">
+                em engenharia elétrica
+              </p>
+              <div className="mt-6 h-1.5 w-24 bg-primary" aria-hidden="true" />
             </div>
           </div>
+          <p className="absolute bottom-6 right-5 z-10 hidden rounded-sm border border-blue-200/30 bg-navy-950/70 px-4 py-2 text-sm font-semibold text-blue-200 backdrop-blur-sm sm:block">
+            Controle e acompanhe seu espaço onde estiver.
+          </p>
         </div>
       </section>
 
