@@ -322,6 +322,20 @@ function Index() {
 
       {/* ============ BLOCO 1 · HERO ============ */}
       <section className="relative overflow-hidden bg-navy-950 pt-18">
+        {/* Foto em toda a seção: cópia desfocada nas laterais + faixa central nítida */}
+        <div className="absolute inset-0" aria-hidden="true">
+          <img
+            src={heroCameraPhone}
+            alt=""
+            className="absolute inset-0 h-full w-full scale-110 object-cover blur-lg"
+          />
+          <img
+            src={heroCameraPhone}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover object-center [mask-image:linear-gradient(to_right,transparent,black_25%,black_75%,transparent)]"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-950/45 to-navy-950/70" />
         <div className="technical-lines absolute inset-0" />
         <div className="relative mx-auto grid min-h-[690px] max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.02fr_.98fr] lg:py-24">
           <div className="animate-rise-in relative z-10 max-w-2xl">
