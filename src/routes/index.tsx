@@ -381,7 +381,7 @@ function Index() {
             {diferencialItems.map((item) => (
               <div
                 key={item.title}
-                className="group relative min-h-80 overflow-hidden rounded-sm border border-blue-200/25 bg-navy-950 p-7 transition-transform hover:-translate-y-1"
+                className="group relative min-h-80 overflow-hidden rounded-md border border-blue-200/25 bg-navy-950 p-7 transition-transform duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02]"
               >
                 <img src={item.image} alt="" aria-hidden="true" loading="lazy" className="pointer-events-none absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-navy-950/5 via-navy-950/25 to-navy-950/95" />
@@ -452,7 +452,7 @@ function Index() {
             {beneficioItems.map((item, index) => (
               <div
                 key={item.title}
-                 className={index === 0 ? "rounded-sm border-t-4 border-primary bg-card p-7 shadow-sm sm:col-span-2 lg:col-span-1" : "rounded-sm border border-border bg-card p-7 shadow-sm"}
+                 className={index === 0 ? "rounded-md border-t-4 border-primary bg-card p-7 shadow-sm transition-transform duration-300 ease-out hover:scale-[1.03] sm:col-span-2 lg:col-span-1" : "rounded-md border border-border bg-card p-7 shadow-sm transition-transform duration-300 ease-out hover:scale-[1.03]"}
               >
                 <div className="inline-flex h-12 w-12 items-center justify-center rounded-sm bg-navy-950 text-primary-foreground">
                   <item.icon className="h-6 w-6" />
@@ -480,15 +480,15 @@ function Index() {
             subtitle="Experiência consolidada com o rigor técnico da engenharia UFU."
           />
           <div className="mt-14 grid gap-6 md:grid-cols-3">
-            <div className="flex min-h-56 flex-col items-center justify-center rounded-sm border border-navy-950 bg-navy-950 p-8 text-center text-primary-foreground">
+            <div className="flex min-h-56 flex-col items-center justify-center rounded-md border border-navy-950 bg-navy-950 p-8 text-center text-primary-foreground transition-transform duration-300 ease-out hover:scale-[1.03]">
               <span className="font-display text-5xl font-bold text-blue-400">32</span>
               <span className="font-display text-2xl font-bold text-blue-200"> anos</span>
               <p className="mt-3 text-sm leading-relaxed text-blue-200/80">
                 de experiência em soluções de engenharia elétrica.
               </p>
             </div>
-            <div className="rounded-sm border border-border bg-card p-8 text-center shadow-sm">
-              <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-sm bg-muted text-primary">
+            <div className="rounded-md border border-border bg-card p-8 text-center shadow-sm transition-transform duration-300 ease-out hover:scale-[1.03]">
+              <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-md bg-muted text-primary">
                 <IconAward className="h-6 w-6" />
               </div>
               <h3 className="mt-4 font-display text-lg font-semibold text-foreground">
@@ -498,8 +498,8 @@ function Index() {
                 Qualidade e excelência da Universidade Federal de Uberlândia.
               </p>
             </div>
-            <div className="rounded-sm border border-border bg-card p-8 text-center shadow-sm">
-              <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-sm bg-muted text-primary">
+            <div className="rounded-md border border-border bg-card p-8 text-center shadow-sm transition-transform duration-300 ease-out hover:scale-[1.03]">
+              <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-md bg-muted text-primary">
                 <IconShield className="h-6 w-6" />
               </div>
               <h3 className="mt-4 font-display text-lg font-semibold text-foreground">
