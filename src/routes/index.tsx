@@ -4,11 +4,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ConseltLogo } from "@/components/conselt-logo";
 import heroCameraPhone from "@/assets/hero-camera-phone.jpg";
 import ctaCamera from "@/assets/cta-camera.jpg";
-import livingLighting from "@/assets/living-lighting.jpg";
-import modularImg from "@/assets/modular.png.asset.json";
-import sensorImg from "@/assets/sensor.png.asset.json";
+import livingLighting from "@/assets/smart-living-room.png";
+import modularImg from "@/assets/modular-system.jpg";
+import sensorImg from "@/assets/presence-sensor.jpg";
 import ufuImg from "@/assets/ufu-engenharia.png.asset.json";
-import luminoImg from "@/assets/luminotecnica.png.asset.json";
+import luminoImg from "@/assets/lighting-design.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -160,19 +160,28 @@ function SectionHeading({
   title,
   subtitle,
   dark = false,
+  centered = false,
+  shadow = false,
 }: {
   eyebrow: string;
   title: string;
   subtitle?: string;
   dark?: boolean;
+  centered?: boolean;
+  shadow?: boolean;
 }) {
   return (
-    <div className="max-w-2xl">
+    <div className={centered ? "mx-auto max-w-3xl text-center" : "max-w-2xl"}>
       <span
         className={
-          dark
-            ? "inline-flex items-center border-l-2 border-blue-400 pl-3 text-xs font-bold uppercase text-blue-200"
-            : "inline-flex items-center border-l-2 border-blue-500 pl-3 text-xs font-bold uppercase text-blue-500"
+          (centered
+            ? (dark
+                ? "inline-flex items-center border-b-2 border-blue-400 pb-1 text-xs font-bold uppercase tracking-wider text-white"
+                : "inline-flex items-center border-b-2 border-blue-500 pb-1 text-xs font-bold uppercase tracking-wider text-blue-500")
+            : (dark
+                ? "inline-flex items-center border-l-2 border-blue-400 pl-3 text-xs font-bold uppercase text-white"
+                : "inline-flex items-center border-l-2 border-blue-500 pl-3 text-xs font-bold uppercase text-blue-500")) +
+          (dark ? " [text-shadow:_0_1px_4px_rgba(0,0,0,0.85)]" : "")
         }
       >
         {eyebrow}
@@ -180,7 +189,9 @@ function SectionHeading({
       <h2
         className={
           "mt-5 font-display text-3xl font-extrabold leading-tight sm:text-4xl " +
-          (dark ? "text-white" : "text-foreground")
+          (dark
+            ? "text-white [text-shadow:_0_2px_8px_rgba(0,0,0,0.85),_0_1px_3px_rgba(0,0,0,0.9)]"
+            : "text-foreground" + (shadow ? " [text-shadow:_0_1px_3px_rgba(0,0,0,0.4),_0_2px_6px_rgba(0,0,0,0.2)]" : ""))
         }
       >
         {title}
@@ -189,7 +200,9 @@ function SectionHeading({
         <p
           className={
             "mt-4 text-base leading-relaxed sm:text-lg " +
-            (dark ? "text-blue-200/85" : "text-muted-foreground")
+            (dark
+              ? "text-blue-100 [text-shadow:_0_1px_4px_rgba(0,0,0,0.8)]"
+              : "text-muted-foreground" + (shadow ? " [text-shadow:_0_1px_3px_rgba(0,0,0,0.35)]" : ""))
           }
         >
           {subtitle}
@@ -237,21 +250,21 @@ function Index() {
   const diferencialItems = [
     {
       icon: IconModules,
-      image: modularImg.url,
+      image: modularImg,
       title: "Sistema modular",
       description:
         "Comece pelo essencial e amplie ambiente por ambiente, sem retrabalho.",
     },
     {
       icon: IconPresence,
-      image: sensorImg.url,
+      image: sensorImg,
       title: "Sensor de presença real",
       description:
         "Detecta pessoas, não apenas movimento, e aciona luz e clima com precisão.",
     },
     {
       icon: IconLight,
-      image: luminoImg.url,
+      image: luminoImg,
       title: "Engenharia luminotécnica",
       description:
         "Luz planejada para conforto, valorização do ambiente e eficiência.",
@@ -260,34 +273,44 @@ function Index() {
 
   const beneficioItems = [
     {
+      num: "01",
+      badge: "Segurança Técnica",
       icon: IconShield,
       title: "Profissionalismo e segurança",
       description:
-        "Instalação segura, com normas técnicas respeitadas.",
+        "Instalação segura, com normas técnicas respeitadas e garantia formal de engenharia.",
     },
     {
-      icon: IconStar,
-      title: "Experiência ímpar aos clientes",
-      description:
-        "Ambientes confortáveis que valorizam cada atendimento.",
-    },
-    {
+      num: "02",
+      badge: "Zero Quebra-Quebra",
       icon: IconNoWall,
       title: "Sem reformas pesadas",
       description:
-        "Tecnologia integrada à estrutura existente, sem quebrar paredes.",
+        "Tecnologia integrada à estrutura existente, sem quebrar paredes, sem poeira ou obras.",
     },
     {
+      num: "03",
+      badge: "Conforto & Valor",
+      icon: IconStar,
+      title: "Experiência ímpar aos clientes",
+      description:
+        "Ambientes confortáveis e inteligentes que valorizam cada atendimento e transformam o espaço.",
+    },
+    {
+      num: "04",
+      badge: "Engenharia UFU",
       icon: IconEngineering,
       title: "Equipe especializada",
       description:
-        "Especialistas em automação e projetos luminotécnicos.",
+        "Especialistas formados pela UFU em automação residencial e projetos luminotécnicos.",
     },
     {
+      num: "05",
+      badge: "Direto da Engenharia",
       icon: IconTag,
       title: "Preço exclusivo no mercado",
       description:
-        "Qualidade de engenharia com condições acessíveis e sem intermediários.",
+        "Qualidade de engenharia com condições acessíveis, modularidade e sem intermediários.",
     },
   ];
 
@@ -336,17 +359,16 @@ function Index() {
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-950/45 to-navy-950/70" />
-        <div className="technical-lines absolute inset-0" />
         <div className="relative mx-auto grid min-h-[690px] max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.02fr_.98fr] lg:py-24">
           <div className="animate-rise-in relative z-10 max-w-2xl">
-            <span className="inline-flex items-center border-l-2 border-blue-400 pl-3 text-xs font-bold uppercase text-blue-200">Engenharia de precisão</span>
-            <h1 className="mt-7 font-display text-4xl font-extrabold leading-[1.08] text-primary-foreground sm:text-6xl">
+            <span className="inline-flex items-center border-l-2 border-blue-400 pl-3 text-xs font-bold uppercase text-blue-200 [text-shadow:_0_1px_3px_rgba(0,0,0,0.8)]">Engenharia de precisão</span>
+            <h1 className="mt-7 font-display text-4xl font-extrabold leading-[1.08] text-primary-foreground sm:text-6xl [text-shadow:_0_2px_8px_rgba(0,0,0,0.85),_0_1px_3px_rgba(0,0,0,0.9)]">
               Automação residencial e comercial
             </h1>
-            <p className="mt-6 max-w-xl font-display text-xl font-bold leading-snug text-blue-200 sm:text-2xl">
+            <p className="mt-6 max-w-xl font-display text-xl font-bold leading-snug text-blue-200 sm:text-2xl [text-shadow:_0_2px_6px_rgba(0,0,0,0.85)]">
               Sua casa ou escritório. Inteligentes em cada detalhe.
             </p>
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-blue-200/85 sm:text-lg">
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-blue-200/90 sm:text-lg [text-shadow:_0_1px_4px_rgba(0,0,0,0.8)]">
               Iluminação, clima e segurança no seu controle — <strong className="font-semibold text-primary-foreground">sem quebrar paredes.</strong>
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -354,46 +376,61 @@ function Index() {
                 href={waLink(WA_DEFAULT_MESSAGE)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-primary px-8 py-3.5 text-base font-bold text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-blue-400 sm:w-auto"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-8 py-3.5 text-base font-bold text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-blue-400 sm:w-auto"
               >
                 <IconWhatsApp className="h-5 w-5" />
                 Quero automatizar meu espaço
               </a>
               <a
                 href="#sobre"
-                className="inline-flex w-full items-center justify-center rounded-sm border border-blue-200/40 bg-transparent px-8 py-3.5 text-base font-semibold text-blue-200 transition-colors hover:border-blue-200 hover:text-primary-foreground sm:w-auto"
+                className="inline-flex w-full items-center justify-center rounded-xl border border-blue-200/40 bg-transparent px-8 py-3.5 text-base font-semibold text-blue-200 transition-colors hover:border-blue-200 hover:text-primary-foreground sm:w-auto"
               >
                 Conhecer a automação
               </a>
             </div>
           </div>
-          <div className="relative z-10 flex justify-center lg:justify-end">
-            {/* Destaque 32 anos */}
-            <div className="animate-rise-in relative border-l-4 border-blue-400 bg-background p-8 shadow-2xl sm:p-10">
-              <span className="absolute right-6 top-6 h-2 w-2 rotate-45 bg-blue-400" aria-hidden="true" />
-              <span className="text-xs font-bold uppercase tracking-wide text-primary">Tradição comprovada</span>
-              <div className="mt-4 flex items-end gap-4">
-                <span className="font-display text-8xl font-extrabold leading-none text-navy-950 sm:text-9xl">32</span>
-                <div className="pb-2">
-                  <span className="block font-display text-3xl font-extrabold leading-none text-navy-800">anos</span>
-                  <span className="mt-1 block text-sm font-semibold text-muted-foreground">de experiência</span>
-                </div>
+          <div className="relative z-10 flex justify-center lg:justify-center lg:mr-12">
+            {/* Destaque 32 anos - Tipografia pura com Efeito de Zoom */}
+            <div className="relative rounded-2xl p-6 sm:p-8 transition-all duration-500 ease-out hover:scale-105 hover:-translate-y-1 cursor-default select-none">
+              <div className="flex flex-col items-center justify-center text-center">
+                {/* Tradição comprovada */}
+                <span className="text-xs font-bold uppercase tracking-widest text-blue-300 [text-shadow:_0_1px_3px_rgba(0,0,0,0.8)]">
+                  Tradição comprovada
+                </span>
+
+                {/* 32 */}
+                <span className="mt-3 font-display text-8xl font-extrabold leading-none tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-blue-100 to-blue-400 drop-shadow-[0_0_25px_rgba(66,165,211,0.4)] sm:text-9xl">
+                  32
+                </span>
+
+                {/* anos */}
+                <span className="mt-2 block font-display text-3xl font-extrabold leading-none text-white tracking-wide sm:text-4xl [text-shadow:_0_2px_8px_rgba(0,0,0,0.85)]">
+                  anos
+                </span>
+
+                {/* de experiência */}
+                <span className="mt-3 block text-xs font-semibold uppercase tracking-wider text-blue-200/90 sm:text-sm [text-shadow:_0_1px_4px_rgba(0,0,0,0.8)]">
+                  de experiência
+                </span>
+
+                {/* em engenharia elétrica */}
+                <span className="mt-1 block text-xs font-semibold uppercase tracking-wider text-blue-200/90 sm:text-sm [text-shadow:_0_1px_4px_rgba(0,0,0,0.8)]">
+                  em engenharia elétrica
+                </span>
               </div>
-              <p className="mt-5 text-base font-semibold leading-snug text-foreground">
-                em engenharia elétrica
-              </p>
-              <div className="mt-6 h-1.5 w-24 bg-primary" aria-hidden="true" />
             </div>
           </div>
-          <p className="absolute bottom-6 right-5 z-10 hidden rounded-sm border border-blue-200/30 bg-navy-950/70 px-4 py-2 text-sm font-semibold text-blue-200 backdrop-blur-sm sm:block">
-            Controle e acompanhe seu espaço onde estiver.
-          </p>
         </div>
+
+        {/* Degradê sutil e progressivo unindo a Seção 1 com a Seção 2 */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent via-navy-950/75 to-navy-800" aria-hidden="true" />
       </section>
 
       {/* ============ BLOCO 2 · DIFERENCIAIS ============ */}
-      <section id="diferenciais" className="relative scroll-mt-20 bg-navy-800 py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <section id="diferenciais" className="relative scroll-mt-20 bg-gradient-to-b from-navy-800 via-navy-800 to-navy-900 py-20 sm:py-28">
+        {/* Brilho radial sutil no topo para integrar as seções */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-navy-800/90 to-transparent" aria-hidden="true" />
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeading
             eyebrow="Nossos diferenciais"
             title="Tecnologia que faz diferença de verdade"
@@ -406,7 +443,7 @@ function Index() {
                 key={item.title}
                 className="group relative min-h-80 overflow-hidden rounded-md border border-blue-200/25 bg-navy-950 p-7 transition-transform duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02]"
               >
-                <img src={item.image} alt="" aria-hidden="true" loading="lazy" className="pointer-events-none absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={item.image} alt={item.title} aria-hidden="true" loading="eager" decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-navy-950/5 via-navy-950/25 to-navy-950/95" />
                 <div className="absolute inset-x-0 bottom-0 z-10 p-7">
                 <div className="inline-flex h-11 w-11 items-center justify-center rounded-sm border border-blue-200/30 bg-navy-950/90 text-blue-200">
@@ -423,71 +460,198 @@ function Index() {
             ))}
           </div>
         </div>
+
+        {/* Degradê sutil na base da Seção 2 */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-44 bg-gradient-to-b from-transparent via-navy-900/60 to-navy-900" aria-hidden="true" />
       </section>
 
       {/* ============ BLOCO 3 · O QUE É AUTOMAÇÃO ============ */}
       <section id="sobre" className="relative scroll-mt-20 overflow-hidden py-20 sm:py-28">
-        <img src={livingLighting} alt="" aria-hidden="true" loading="lazy" width={1600} height={1200} className="absolute inset-0 h-full w-full object-cover" />
-        <div className="pointer-events-none absolute inset-0 bg-background/80" />
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
-          <div className="hidden min-h-72 border-l border-primary/30 lg:block" />
-          <div>
-              <SectionHeading
-                eyebrow="O que é automação residencial?"
-                title="Sua casa e seu escritório trabalhando por você"
-                subtitle=""
-              />
-               <div className="mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground">
-                <p>
-                  Conecte <strong className="font-semibold text-foreground">luzes, climatização, cortinas e segurança</strong> em um só sistema. Controle pelo celular, por voz ou deixe sua rotina acontecer automaticamente.
-                </p>
-              </div>
-              <div className="mt-8 grid gap-px border border-border bg-border sm:grid-cols-2">
-                {[
-                  "Iluminação inteligente",
-                  "Clima e ar-condicionado",
-                  "Cortinas e persianas",
-                  "Segurança e acesso",
-                  "Cenas de iluminação",
-                  "Economia de energia",
-                ].map((chip) => (
-                  <span
-                    key={chip}
-                    className="bg-background px-4 py-3 text-sm font-semibold text-foreground"
-                  >
-                    {chip}
-                  </span>
-                ))}
-              </div>
+        {/* Imagem de fundo com desfoque ultra sutil e cores vivas */}
+        <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+          <img
+            src={livingLighting}
+            alt="Ambiente inteligente com automação residencial"
+            loading="eager"
+            className="h-full w-full object-cover object-center blur-[1px] scale-[1.01]"
+          />
+        </div>
+        <div className="pointer-events-none absolute inset-0 bg-background/25" />
+
+        {/* Transição em degradê suave vindo da Seção 2 */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-navy-900 via-navy-900/40 to-transparent" aria-hidden="true" />
+
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+          <div className="mx-auto max-w-4xl text-center">
+            <SectionHeading
+              eyebrow="O que é automação residencial?"
+              title="Sua casa e seu escritório trabalhando por você"
+              subtitle=""
+              centered
+              dark
+            />
+            <div className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-blue-100 font-medium sm:text-lg text-center [text-shadow:_0_1px_4px_rgba(0,0,0,0.85)]">
+              <p>
+                Conecte <strong className="font-semibold text-white">luzes, climatização, cortinas e segurança</strong> em um só sistema. Controle pelo celular, por voz ou deixe sua rotina acontecer automaticamente.
+              </p>
+            </div>
+
+            {/* Cards modernos de funcionalidades de automação - Centralizados */}
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  title: "Iluminação inteligente",
+                  desc: "Crie cenários e controle por voz ou app.",
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6" aria-hidden="true">
+                      <path d="M9 18h6M10 21h4" />
+                      <path d="M12 3a6 6 0 0 0-3.5 10.9c.8.6 1.5 1.6 1.5 2.6h4c0-1 .7-2 1.5-2.6A6 6 0 0 0 12 3Z" />
+                      <path d="M12 1v2M3 12h2M19 12h2M5 5l1.5 1.5M17.5 6.5 19 5" />
+                    </svg>
+                  ),
+                },
+                {
+                  title: "Clima e ar-condicionado",
+                  desc: "Temperatura ideal em cada momento.",
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6" aria-hidden="true">
+                      <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z" />
+                      <path d="M12 11v4" />
+                    </svg>
+                  ),
+                },
+                {
+                  title: "Cortinas e persianas",
+                  desc: "Abertura sincronizada com a luz solar.",
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6" aria-hidden="true">
+                      <rect x="3" y="3" width="18" height="18" rx="2" />
+                      <path d="M3 9h18M3 15h18M9 3v18" />
+                    </svg>
+                  ),
+                },
+                {
+                  title: "Segurança e acesso",
+                  desc: "Fechaduras digitais, alertas e câmeras.",
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6" aria-hidden="true">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+                      <path d="m9 12 2 2 4-4" />
+                    </svg>
+                  ),
+                },
+                {
+                  title: "Cenas de iluminação",
+                  desc: "Modos personalizados com um toque.",
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6" aria-hidden="true">
+                      <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z" />
+                    </svg>
+                  ),
+                },
+                {
+                  title: "Economia de energia",
+                  desc: "Desligamento automático e eficiência.",
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6" aria-hidden="true">
+                      <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
+                    </svg>
+                  ),
+                },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="group flex flex-col items-center justify-center text-center rounded-xl border border-border/80 bg-background/95 p-6 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/60 hover:bg-background hover:shadow-md"
+                >
+                  <div className="mb-3.5 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                    {item.icon}
+                  </div>
+                  <h4 className="font-display text-base font-bold text-foreground transition-colors group-hover:text-primary sm:text-lg">
+                    {item.title}
+                  </h4>
+                  <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-muted-foreground">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* ============ BLOCO 4 · BENEFÍCIOS ============ */}
-      <section className="relative bg-muted py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <SectionHeading
-            eyebrow="Por que a CONSELT"
-            title="Benefícios de contratar a CONSELT"
-            subtitle="Segurança e eficiência em cada etapa."
-          />
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {beneficioItems.map((item, index) => (
-              <div
-                key={item.title}
-                 className={index === 0 ? "rounded-md border-t-4 border-primary bg-card p-7 shadow-sm transition-transform duration-300 ease-out hover:scale-[1.03] sm:col-span-2 lg:col-span-1" : "rounded-md border border-border bg-card p-7 shadow-sm transition-transform duration-300 ease-out hover:scale-[1.03]"}
-              >
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-sm bg-navy-950 text-primary-foreground">
-                  <item.icon className="h-6 w-6" />
+      <section className="relative overflow-hidden bg-gradient-to-b from-background via-muted/40 to-background py-20 sm:py-28">
+        {/* Glows de ambientação sutis com as cores CONSELT */}
+        <div className="pointer-events-none absolute -left-40 top-1/4 h-96 w-96 rounded-full bg-blue-500/5 blur-3xl" aria-hidden="true" />
+        <div className="pointer-events-none absolute -right-40 bottom-1/4 h-96 w-96 rounded-full bg-cyan-400/5 blur-3xl" aria-hidden="true" />
+
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+            <SectionHeading
+              eyebrow="Por que a CONSELT"
+              title="Benefícios de contratar a CONSELT"
+              subtitle="Segurança, excelência técnica e eficiência em cada etapa do seu projeto."
+              shadow
+            />
+            <div className="hidden items-center gap-2 rounded-full border border-blue-400/25 bg-background/80 px-4 py-1.5 text-xs font-bold text-primary shadow-xs backdrop-blur-md md:inline-flex">
+              <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+              Padrão de Engenharia
+            </div>
+          </div>
+
+          {/* Grid Bento Moderno (2 cards largos no topo + 3 cards equilibrados na base) */}
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-6">
+            {beneficioItems.map((item, index) => {
+              const isTopRow = index < 2;
+              return (
+                <div
+                  key={item.title}
+                  className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-border/80 bg-card p-7 sm:p-8 shadow-xs transition-all duration-300 hover:-translate-y-1.5 hover:border-blue-400/60 hover:shadow-xl ${
+                    isTopRow ? "lg:col-span-3" : "lg:col-span-2"
+                  }`}
+                >
+                  {/* Linha de brilho superior ao passar o mouse */}
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  
+                  {/* Glow sutil no canto do card */}
+                  <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-blue-500/0 blur-2xl transition-all duration-500 group-hover:bg-blue-500/10 group-hover:scale-125" />
+
+                  <div>
+                    {/* Topo do Card: Ícone + Tag + Número */}
+                    <div className="flex items-center justify-between">
+                      <div className="flex h-13 w-13 items-center justify-center rounded-xl bg-navy-950 text-blue-300 shadow-md transition-all duration-300 group-hover:scale-105 group-hover:bg-primary group-hover:text-primary-foreground">
+                        <item.icon className="h-6 w-6" />
+                      </div>
+                      <div className="flex items-center gap-2.5">
+                        <span className="rounded-full bg-muted/90 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-primary border border-border/60">
+                          {item.badge}
+                        </span>
+                        <span className="font-mono text-xs font-extrabold text-muted-foreground/40">
+                          {item.num}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Conteúdo */}
+                    <div className="mt-6">
+                      <h3 className="font-display text-xl font-bold text-foreground transition-colors group-hover:text-primary sm:text-2xl">
+                        {item.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Detalhe de rodapé do card */}
+                  <div className="mt-8 flex items-center gap-2 pt-4 border-t border-border/40 text-xs font-semibold text-primary/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <span>Garantia CONSELT</span>
+                    <span className="h-1 w-1 rounded-full bg-primary" />
+                    <span className="text-muted-foreground font-normal">Excelência técnica</span>
+                  </div>
                 </div>
-                <h3 className="mt-5 font-display text-lg font-semibold text-foreground">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  {item.description}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
