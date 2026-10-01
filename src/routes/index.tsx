@@ -359,6 +359,7 @@ function Index() {
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-950/45 to-navy-950/70" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-56 bg-gradient-to-b from-transparent to-navy-950" aria-hidden="true" />
         <div className="relative mx-auto grid min-h-[690px] max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.02fr_.98fr] lg:py-24">
           <div className="animate-rise-in relative z-10 max-w-2xl">
             <span className="inline-flex items-center border-l-2 border-blue-400 pl-3 text-xs font-bold uppercase text-blue-200 [text-shadow:_0_1px_3px_rgba(0,0,0,0.8)]">Engenharia de precisão</span>
@@ -423,13 +424,12 @@ function Index() {
         </div>
 
         {/* Degradê sutil e progressivo unindo a Seção 1 com a Seção 2 */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent via-navy-950/75 to-navy-800" aria-hidden="true" />
       </section>
 
       {/* ============ BLOCO 2 · DIFERENCIAIS ============ */}
-      <section id="diferenciais" className="relative scroll-mt-20 bg-gradient-to-b from-navy-800 via-navy-800 to-navy-900 py-20 sm:py-28">
-        {/* Brilho radial sutil no topo para integrar as seções */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-navy-800/90 to-transparent" aria-hidden="true" />
+      <section id="diferenciais" className="relative scroll-mt-20 bg-[linear-gradient(to_bottom,var(--color-navy-950)_0%,var(--color-navy-800)_18%,var(--color-navy-800)_60%,var(--color-navy-900)_78%,var(--color-background)_100%)] pb-40 pt-20 sm:pb-52 sm:pt-28">
+        {/* Luz suave que acompanha a transição */}
+        <div className="pointer-events-none absolute left-1/2 top-24 h-[380px] w-[820px] -translate-x-1/2 rounded-full bg-blue-500/15 blur-3xl" aria-hidden="true" />
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeading
             eyebrow="Nossos diferenciais"
@@ -466,9 +466,9 @@ function Index() {
       </section>
 
       {/* ============ BLOCO 3 · O QUE É AUTOMAÇÃO ============ */}
-      <section id="sobre" className="relative scroll-mt-20 overflow-hidden py-20 sm:py-28">
-        {/* Imagem de fundo com desfoque ultra sutil e cores vivas */}
-        <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+      <section id="sobre" className="relative scroll-mt-20 overflow-hidden bg-background py-28 sm:py-36">
+        {/* Imagem com bordas superior e inferior dissolvidas nas seções vizinhas */}
+        <div className="absolute inset-0 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_22%,black_78%,transparent)]" aria-hidden="true">
           <img
             src={livingLighting}
             alt="Ambiente inteligente com automação residencial"
@@ -657,9 +657,9 @@ function Index() {
       </section>
 
       {/* ============ BLOCO 5 · PROVAS DE CONFIANÇA ============ */}
-      <section id="confianca" className="relative scroll-mt-20 overflow-hidden py-20 sm:py-28">
-        <img src={ufuImg.url} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="pointer-events-none absolute inset-0 bg-background/70" />
+      <section id="confianca" className="relative scroll-mt-20 overflow-hidden py-28 sm:py-36">
+        <img src={ufuImg.url} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 h-full w-full object-cover [mask-image:linear-gradient(to_bottom,transparent,black_22%,black_78%,transparent)]" />
+        <div className="pointer-events-none absolute inset-0 bg-background/70 [mask-image:linear-gradient(to_bottom,transparent,black_22%,black_78%,transparent)]" />
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeading
             eyebrow="Provas de confiança"
@@ -769,7 +769,8 @@ function Index() {
 
       {/* ============ BLOCO 6 · FAQ ============ */}
       <section id="duvidas" className="relative scroll-mt-20 py-20 sm:py-28">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+        <div className="pointer-events-none absolute left-1/2 top-1/3 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-blue-200/20 blur-3xl" aria-hidden="true" />
+        <div className="relative mx-auto max-w-3xl px-4 sm:px-6">
           <SectionHeading
             eyebrow="Perguntas frequentes"
             title="Tire suas dúvidas antes de falar com a gente"
@@ -824,10 +825,13 @@ function Index() {
       </section>
 
       {/* ============ BLOCO 7 · CHAMADA FINAL (WHATSAPP) ============ */}
-      <section className="relative overflow-hidden bg-navy-950 py-20 sm:py-28">
-        <img src={ctaCamera} alt="" aria-hidden="true" loading="lazy" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover opacity-75" />
-        <div className="absolute inset-0 bg-navy-950/70" />
-        <div className="technical-lines absolute inset-0" />
+      <section className="relative overflow-hidden bg-background pb-32 pt-40 sm:pb-40 sm:pt-52">
+        <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_30%,black_70%,transparent)]" aria-hidden="true">
+          <div className="absolute inset-0 bg-navy-950" />
+          <img src={ctaCamera} alt="" loading="lazy" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover opacity-75" />
+          <div className="absolute inset-0 bg-navy-950/70" />
+          <div className="technical-lines absolute inset-0" />
+        </div>
         <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
           <ConseltLogo className="mx-auto h-20 w-auto" />
           <h2 className="mt-8 font-display text-3xl font-bold leading-tight text-white sm:text-5xl">
@@ -851,7 +855,7 @@ function Index() {
       </section>
 
       {/* ============ RODAPÉ ============ */}
-      <footer className="border-t border-border bg-background py-10">
+      <footer className="bg-background py-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-5 px-4 text-center sm:px-6">
           <div className="flex items-center gap-3">
             <ConseltLogo className="h-8 w-auto" />
