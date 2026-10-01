@@ -424,7 +424,6 @@ function Index() {
         </div>
 
         {/* Degradê sutil e progressivo unindo a Seção 1 com a Seção 2 */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent via-navy-950/75 to-navy-800" aria-hidden="true" />
       </section>
 
       {/* ============ BLOCO 2 · DIFERENCIAIS ============ */}
