@@ -359,7 +359,7 @@ function Index() {
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-950/45 to-navy-950/70" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-navy-950" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-56 bg-gradient-to-b from-transparent to-navy-950" aria-hidden="true" />
         <div className="relative mx-auto grid min-h-[690px] max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.02fr_.98fr] lg:py-24">
           <div className="animate-rise-in relative z-10 max-w-2xl">
             <span className="inline-flex items-center border-l-2 border-blue-400 pl-3 text-xs font-bold uppercase text-blue-200 [text-shadow:_0_1px_3px_rgba(0,0,0,0.8)]">Engenharia de precisão</span>
