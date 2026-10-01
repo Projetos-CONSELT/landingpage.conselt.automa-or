@@ -697,7 +697,7 @@ function Index() {
 
               <ul className="mt-8 space-y-3.5">
                 {[
-                  "Equipe de engenheiros formados pela UFU",
+                  "Equipe de estudantes de engenharia da UFU",
                   "Garantia formal de instalação e equipamentos",
                   "Suporte direto com a equipe de engenharia",
                 ].map((item) => (
