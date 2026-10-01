@@ -666,35 +666,102 @@ function Index() {
             title="Tradição e excelência em engenharia"
             subtitle="Experiência consolidada com o rigor técnico da engenharia UFU."
           />
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            <div className="flex min-h-56 flex-col items-center justify-center rounded-md border border-navy-950 bg-navy-950 p-8 text-center text-primary-foreground transition-transform duration-300 ease-out hover:scale-[1.03]">
-              <span className="font-display text-5xl font-bold text-blue-400">32</span>
-              <span className="font-display text-2xl font-bold text-blue-200"> anos</span>
-              <p className="mt-3 text-sm leading-relaxed text-blue-200/80">
-                de experiência em soluções de engenharia elétrica.
-              </p>
-            </div>
-            <div className="rounded-md border border-border bg-card p-8 text-center shadow-sm transition-transform duration-300 ease-out hover:scale-[1.03]">
-              <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-md bg-muted text-primary">
-                <IconAward className="h-6 w-6" />
+
+          <div className="mt-14 grid gap-6 lg:grid-cols-[1.05fr_1fr]">
+            {/* Painel de destaque · 32 anos */}
+            <div className="group relative overflow-hidden rounded-xl border border-white/25 bg-navy-950/90 p-8 shadow-lg backdrop-blur-md transition-transform duration-300 ease-out hover:scale-[1.02] sm:p-10">
+              {/* Elementos gráficos decorativos */}
+              <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full border border-blue-400/15" aria-hidden="true" />
+              <div className="pointer-events-none absolute -right-10 -top-10 h-64 w-64 rounded-full border border-blue-400/25" aria-hidden="true" />
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/60 to-transparent" aria-hidden="true" />
+
+              <span className="text-xs font-bold uppercase tracking-wider text-blue-300">
+                CONSELT · Empresa Júnior UFU
+              </span>
+
+              <div className="mt-6 flex items-end gap-3">
+                <span className="font-display text-7xl font-extrabold leading-none tracking-tight text-white sm:text-8xl">
+                  32
+                </span>
+                <span className="pb-2 font-display text-2xl font-bold text-blue-400 sm:text-3xl">
+                  anos
+                </span>
               </div>
-              <h3 className="mt-4 font-display text-lg font-semibold text-foreground">
-                Engenharia UFU
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Qualidade e excelência da Universidade Federal de Uberlândia.
+
+              <div className="mt-6 h-px w-full bg-gradient-to-r from-blue-400/50 to-transparent" aria-hidden="true" />
+
+              <p className="mt-6 text-base leading-relaxed text-blue-100 sm:text-lg">
+                de experiência em soluções de{" "}
+                <strong className="font-semibold text-white">engenharia elétrica</strong>, uma trajetória sólida construída projeto a projeto.
               </p>
+
+              <ul className="mt-8 space-y-3.5">
+                {[
+                  "Equipe de engenheiros formados pela UFU",
+                  "Garantia formal de instalação e equipamentos",
+                  "Suporte direto com a equipe de engenharia",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-center gap-3 text-sm font-medium text-blue-200 sm:text-base"
+                  >
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-blue-400/40 bg-blue-400/10 text-blue-300">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="h-3 w-3" aria-hidden="true">
+                        <path d="m5 13 4 4L19 7" />
+                      </svg>
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="rounded-md border border-border bg-card p-8 text-center shadow-sm transition-transform duration-300 ease-out hover:scale-[1.03]">
-              <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-md bg-muted text-primary">
-                <IconShield className="h-6 w-6" />
-              </div>
-              <h3 className="mt-4 font-display text-lg font-semibold text-foreground">
-                Qualidade garantida
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Normas técnicas, garantia formal e suporte da própria equipe.
-              </p>
+
+            {/* Cards de apoio · glassmorphism discreto */}
+            <div className="flex flex-col gap-6">
+              {[
+                {
+                  icon: IconAward,
+                  tag: "Ensino federal",
+                  title: "Engenharia UFU",
+                  description:
+                    "Qualidade e excelência da Universidade Federal de Uberlândia.",
+                  highlight: "Universidade Federal de Uberlândia",
+                },
+                {
+                  icon: IconShield,
+                  tag: "Padrão técnico",
+                  title: "Qualidade garantida",
+                  description:
+                    "Normas técnicas, garantia formal e suporte da própria equipe.",
+                  highlight: "Normas técnicas · Garantia formal · Suporte próprio",
+                },
+              ].map((card) => (
+                <div
+                  key={card.title}
+                  className="group flex flex-1 items-start gap-5 rounded-xl border border-white/70 bg-white/70 p-7 shadow-sm backdrop-blur-md transition-transform duration-300 ease-out hover:scale-[1.02] sm:p-8"
+                >
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-primary/15 bg-primary/10 text-primary">
+                    <card.icon className="h-6 w-6" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex items-center justify-between gap-3">
+                      <h3 className="font-display text-lg font-bold text-foreground">
+                        {card.title}
+                      </h3>
+                      <span className="hidden rounded-full border border-border/70 bg-background/70 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide text-muted-foreground sm:inline-block">
+                        {card.tag}
+                      </span>
+                    </div>
+                    <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">
+                      {card.description}
+                    </p>
+                    <div className="mt-5 h-px w-full bg-border/60" aria-hidden="true" />
+                    <p className="mt-3.5 text-xs font-semibold text-primary">
+                      {card.highlight}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
