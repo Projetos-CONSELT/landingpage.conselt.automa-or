@@ -2,12 +2,9 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { ConseltLogo } from "@/components/conselt-logo";
-import heroCameraPhone from "@/assets/hero-camera-phone.jpg";
-import ctaCamera from "@/assets/cta-camera.jpg";
-import livingLighting from "@/assets/smart-living-room.png";
+import { PageBackground } from "@/components/page-background";
 import modularImg from "@/assets/modular-system.jpg";
 import sensorImg from "@/assets/presence-sensor.jpg";
-import ufuImg from "@/assets/ufu-engenharia.png.asset.json";
 import luminoImg from "@/assets/lighting-design.jpg";
 
 export const Route = createFileRoute("/")({
@@ -315,7 +312,8 @@ function Index() {
   ];
 
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground">
+    <div className="landing-page min-h-screen font-sans text-foreground">
+      <PageBackground />
       {/* ============ CABEÇALHO ============ */}
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
         <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-5 sm:px-8">
@@ -344,22 +342,7 @@ function Index() {
       </header>
 
       {/* ============ BLOCO 1 · HERO ============ */}
-      <section className="relative overflow-hidden bg-navy-950 pt-18">
-        {/* Foto em toda a seção: cópia desfocada nas laterais + faixa central nítida */}
-        <div className="absolute inset-0" aria-hidden="true">
-          <img
-            src={heroCameraPhone}
-            alt=""
-            className="absolute inset-0 h-full w-full scale-110 object-cover blur-lg"
-          />
-          <img
-            src={heroCameraPhone}
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover object-center [mask-image:linear-gradient(to_right,transparent,black_25%,black_75%,transparent)]"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-950/45 to-navy-950/70" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-56 bg-gradient-to-b from-transparent to-navy-950" aria-hidden="true" />
+      <section data-backdrop="hero" className="relative pt-18">
         <div className="relative mx-auto grid min-h-[690px] max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.02fr_.98fr] lg:py-24">
           <div className="animate-rise-in relative z-10 max-w-2xl">
             <span className="inline-flex items-center border-l-2 border-blue-400 pl-3 text-xs font-bold uppercase text-blue-200 [text-shadow:_0_1px_3px_rgba(0,0,0,0.8)]">Engenharia de precisão</span>
@@ -427,9 +410,7 @@ function Index() {
       </section>
 
       {/* ============ BLOCO 2 · DIFERENCIAIS ============ */}
-      <section id="diferenciais" className="relative scroll-mt-20 bg-[linear-gradient(to_bottom,var(--color-navy-950)_0%,var(--color-navy-800)_18%,var(--color-navy-800)_60%,var(--color-navy-900)_78%,var(--color-background)_100%)] pb-40 pt-20 sm:pb-52 sm:pt-28">
-        {/* Luz suave que acompanha a transição */}
-        <div className="pointer-events-none absolute left-1/2 top-24 h-[380px] w-[820px] -translate-x-1/2 rounded-full bg-blue-500/15 blur-3xl" aria-hidden="true" />
+      <section id="diferenciais" data-backdrop="features" className="relative scroll-mt-20 pb-40 pt-20 sm:pb-52 sm:pt-28">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeading
             eyebrow="Nossos diferenciais"
@@ -461,26 +442,10 @@ function Index() {
           </div>
         </div>
 
-        {/* Degradê sutil na base da Seção 2 */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-44 bg-gradient-to-b from-transparent via-navy-900/60 to-navy-900" aria-hidden="true" />
       </section>
 
       {/* ============ BLOCO 3 · O QUE É AUTOMAÇÃO ============ */}
-      <section id="sobre" className="relative scroll-mt-20 overflow-hidden bg-background py-28 sm:py-36">
-        {/* Imagem com bordas superior e inferior dissolvidas nas seções vizinhas */}
-        <div className="absolute inset-0 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_22%,black_78%,transparent)]" aria-hidden="true">
-          <img
-            src={livingLighting}
-            alt="Ambiente inteligente com automação residencial"
-            loading="eager"
-            className="h-full w-full object-cover object-center blur-[1px] scale-[1.01]"
-          />
-        </div>
-        <div className="pointer-events-none absolute inset-0 bg-background/25" />
-
-        {/* Transição em degradê suave vindo da Seção 2 */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-navy-900 via-navy-900/40 to-transparent" aria-hidden="true" />
-
+      <section id="sobre" data-backdrop="living" className="relative scroll-mt-20 py-28 sm:py-36">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <SectionHeading
@@ -580,11 +545,7 @@ function Index() {
       </section>
 
       {/* ============ BLOCO 4 · BENEFÍCIOS ============ */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-background via-muted/40 to-background py-20 sm:py-28">
-        {/* Glows de ambientação sutis com as cores CONSELT */}
-        <div className="pointer-events-none absolute -left-40 top-1/4 h-96 w-96 rounded-full bg-blue-500/5 blur-3xl" aria-hidden="true" />
-        <div className="pointer-events-none absolute -right-40 bottom-1/4 h-96 w-96 rounded-full bg-cyan-400/5 blur-3xl" aria-hidden="true" />
-
+      <section data-backdrop="benefits" className="relative py-20 sm:py-28">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <SectionHeading
@@ -657,9 +618,7 @@ function Index() {
       </section>
 
       {/* ============ BLOCO 5 · PROVAS DE CONFIANÇA ============ */}
-      <section id="confianca" className="relative scroll-mt-20 overflow-hidden py-28 sm:py-36">
-        <img src={ufuImg.url} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 h-full w-full object-cover [mask-image:linear-gradient(to_bottom,transparent,black_22%,black_78%,transparent)]" />
-        <div className="pointer-events-none absolute inset-0 bg-background/70 [mask-image:linear-gradient(to_bottom,transparent,black_22%,black_78%,transparent)]" />
+      <section id="confianca" data-backdrop="trust" className="relative scroll-mt-20 py-28 sm:py-36">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeading
             eyebrow="Provas de confiança"
@@ -768,8 +727,7 @@ function Index() {
       </section>
 
       {/* ============ BLOCO 6 · FAQ ============ */}
-      <section id="duvidas" className="relative scroll-mt-20 py-20 sm:py-28">
-        <div className="pointer-events-none absolute left-1/2 top-1/3 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-blue-200/20 blur-3xl" aria-hidden="true" />
+      <section id="duvidas" data-backdrop="faq" className="relative scroll-mt-20 py-20 sm:py-28">
         <div className="relative mx-auto max-w-3xl px-4 sm:px-6">
           <SectionHeading
             eyebrow="Perguntas frequentes"
@@ -825,13 +783,7 @@ function Index() {
       </section>
 
       {/* ============ BLOCO 7 · CHAMADA FINAL (WHATSAPP) ============ */}
-      <section className="relative overflow-hidden bg-background pb-32 pt-40 sm:pb-40 sm:pt-52">
-        <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_30%,black_70%,transparent)]" aria-hidden="true">
-          <div className="absolute inset-0 bg-navy-950" />
-          <img src={ctaCamera} alt="" loading="lazy" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover opacity-75" />
-          <div className="absolute inset-0 bg-navy-950/70" />
-          <div className="technical-lines absolute inset-0" />
-        </div>
+      <section data-backdrop="cta" className="relative pb-32 pt-40 sm:pb-40 sm:pt-52">
         <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
           <ConseltLogo className="mx-auto h-20 w-auto" />
           <h2 className="mt-8 font-display text-3xl font-bold leading-tight text-white sm:text-5xl">
@@ -855,7 +807,7 @@ function Index() {
       </section>
 
       {/* ============ RODAPÉ ============ */}
-      <footer className="bg-background py-10">
+      <footer data-backdrop="footer" className="relative py-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-5 px-4 text-center sm:px-6">
           <div className="flex items-center gap-3">
             <ConseltLogo className="h-8 w-auto" />
