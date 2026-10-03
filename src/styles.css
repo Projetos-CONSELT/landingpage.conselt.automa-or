@@ -180,14 +180,7 @@
       #a6bccb calc(var(--benefits-top) - var(--blend) * .15),
       #edf3f6 calc(var(--benefits-top) + var(--blend) * .4),
       #f6f9fb calc(var(--benefits-top) + var(--blend)),
-      #f6f9fb calc(var(--cta-top) - var(--blend)),
-      #d9e5ec calc(var(--cta-top) - var(--blend) * .4),
-      #57758e calc(var(--cta-top) + var(--blend) * .25),
-      var(--navy-950) calc(var(--cta-top) + var(--blend)),
-      var(--navy-950) calc(var(--footer-top) - var(--blend)),
-      #688298 calc(var(--footer-top) - var(--blend) * .45),
-      #e3ecf2 calc(var(--footer-top) + var(--blend) * .05),
-      #f6f9fb calc(var(--footer-top) + 36px));
+      #f6f9fb 100%);
 }
 
 .page-background__photo {
@@ -230,7 +223,14 @@
 
 .page-background__cta {
   top: var(--cta-top);
-  height: var(--cta-height);
+  height: calc(var(--cta-height) + var(--footer-height, 243px));
+  mask-image: radial-gradient(ellipse 85% 48% at 75% 42%, #000 0%, #0009 40%, transparent 100%);
 }
 
 .page-background__cta img { opacity: .25; }
+
+/* The closing composition shares the page canvas, without a section fill. */
+.closing-cta { padding-block: clamp(5rem, 9vw, 8rem) clamp(4rem, 7vw, 6rem); }
+.closing-cta__brand { display: inline-flex; align-items: center; gap: 1rem; padding: .8rem 1.25rem; border: 1px solid var(--border); border-radius: 1rem; background: rgb(255 255 255 / .65); }
+.closing-cta__button { box-shadow: 0 8px 24px rgb(5 29 62 / .12); }
+.closing-cta__button:focus-visible { outline: 3px solid var(--navy-800); outline-offset: 5px; }
