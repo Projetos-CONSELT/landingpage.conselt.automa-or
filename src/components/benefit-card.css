@@ -1,0 +1,27 @@
+/* Reserve natural text height: revealing never moves neighbouring cards. */
+.benefit-card .benefit-card__description,
+.benefit-card .benefit-card__detail {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 280ms ease-out, transform 280ms ease-out;
+}
+.benefit-card__hint { display: none; }
+.benefit-card[data-reveal-mode="hover"] .benefit-card__hint {
+  display: block;
+  margin-top: .75rem;
+  font-size: .75rem;
+  color: var(--primary);
+}
+.benefit-card[data-reveal-mode="hover"]:not(:hover):not(:focus-within) .benefit-card__description,
+.benefit-card[data-reveal-mode="hover"]:not(:hover):not(:focus-within) .benefit-card__detail,
+.benefit-card[data-reveal-mode="scroll"]:not([data-revealed]):not(:focus-within) .benefit-card__description,
+.benefit-card[data-reveal-mode="scroll"]:not([data-revealed]):not(:focus-within) .benefit-card__detail {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.benefit-card:focus-visible { outline: 3px solid var(--blue-400); outline-offset: 4px; }
+.benefit-card:focus-within { border-color: var(--blue-400); }
+@media (prefers-reduced-motion: reduce) {
+  .benefit-card, .benefit-card * { transition: none !important; transform: none !important; }
+  .benefit-card .benefit-card__description, .benefit-card .benefit-card__detail { opacity: 1 !important; }
+}

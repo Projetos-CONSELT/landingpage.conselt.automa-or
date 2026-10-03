@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { ConseltLogo } from "@/components/conselt-logo";
+import { BenefitCard } from "@/components/benefit-card";
 import { PageBackground } from "@/components/page-background";
 import modularImg from "@/assets/modular-system.jpg";
 import sensorImg from "@/assets/presence-sensor.jpg";
@@ -565,7 +566,8 @@ function Index() {
             {beneficioItems.map((item, index) => {
               const isTopRow = index < 2;
               return (
-                <div
+                <BenefitCard
+                  title={item.title}
                   key={item.title}
                   className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-border/80 bg-card p-7 sm:p-8 shadow-xs transition-all duration-300 hover:-translate-y-1.5 hover:border-blue-400/60 hover:shadow-xl ${
                     isTopRow ? "lg:col-span-3" : "lg:col-span-2"
@@ -598,19 +600,20 @@ function Index() {
                       <h3 className="font-display text-xl font-bold text-foreground transition-colors group-hover:text-primary sm:text-2xl">
                         {item.title}
                       </h3>
-                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                      <span className="benefit-card__hint" aria-hidden="true">Passe o mouse ou foque para saber mais ↗</span>
+                      <p className="benefit-card__description mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
                         {item.description}
                       </p>
                     </div>
                   </div>
 
                   {/* Detalhe de rodapé do card */}
-                  <div className="mt-8 flex items-center gap-2 pt-4 border-t border-border/40 text-xs font-semibold text-primary/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <div className="benefit-card__detail mt-8 flex flex-wrap items-center gap-2 pt-4 border-t border-border/40 text-xs font-semibold text-primary/80">
                     <span>Garantia CONSELT</span>
                     <span className="h-1 w-1 rounded-full bg-primary" />
                     <span className="text-muted-foreground font-normal">Excelência técnica</span>
                   </div>
-                </div>
+                </BenefitCard>
               );
             })}
           </div>
@@ -783,13 +786,16 @@ function Index() {
       </section>
 
       {/* ============ BLOCO 7 · CHAMADA FINAL (WHATSAPP) ============ */}
-      <section data-backdrop="cta" className="relative pb-32 pt-40 sm:pb-40 sm:pt-52">
+      <section data-backdrop="cta" aria-labelledby="closing-title" className="closing-cta relative">
         <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <ConseltLogo className="mx-auto h-20 w-auto" />
-          <h2 className="mt-8 font-display text-3xl font-bold leading-tight text-white sm:text-5xl">
-            Pronto para viver o <span className="text-blue-400">futuro</span> hoje?
+          <div className="closing-cta__brand">
+            <ConseltLogo className="h-10 w-auto" />
+            <span className="text-xs font-bold uppercase tracking-widest text-primary">CONSELT · Engenharia</span>
+          </div>
+          <h2 id="closing-title" className="mt-8 font-display text-4xl font-extrabold leading-tight tracking-tight text-navy-950 sm:text-5xl">
+            Pronto para viver o <span className="text-primary">futuro</span> hoje?
           </h2>
-          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-blue-200/80 sm:text-lg">
+          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
             Receba uma proposta personalizada para sua casa ou escritório.
           </p>
           <div className="mt-10">
@@ -797,7 +803,7 @@ function Index() {
               href={waLink(WA_DEFAULT_MESSAGE)}
               target="_blank"
               rel="noopener noreferrer"
-             className="inline-flex items-center justify-center gap-3 rounded-sm bg-whatsapp px-10 py-4 text-lg font-bold text-navy-950 transition-all hover:-translate-y-0.5 hover:bg-whatsapp-hover"
+             className="closing-cta__button inline-flex w-full items-center justify-center gap-3 rounded-xl border border-navy-950/10 bg-whatsapp px-6 py-4 text-base font-bold text-navy-950 transition-all hover:-translate-y-0.5 hover:bg-whatsapp-hover sm:w-auto sm:px-10 sm:text-lg"
             >
               <IconWhatsApp className="h-6 w-6" />
               Chamar no WhatsApp
