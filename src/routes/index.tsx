@@ -1,4 +1,8 @@
 import { useState } from "react";
+import "@/components/header-refinements.css";
+import heroPreload from "@/assets/hero-camera-phone.webp";
+import "@/components/faq-section.css";
+import { usePageMotion } from "@/hooks/use-page-motion";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { ConseltLogo } from "@/components/conselt-logo";
@@ -10,6 +14,7 @@ import luminoImg from "@/assets/lighting-design.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
+    links: [{ rel: "preload", as: "image", href: heroPreload, fetchPriority: "high" }],
     meta: [
       { title: "CONSELT | Automação Residencial e Comercial" },
       {
@@ -215,6 +220,7 @@ function SectionHeading({
 /* ------------------------------------------------------------------ */
 
 function Index() {
+  const motionRef = usePageMotion();
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const faqs = [
@@ -313,18 +319,18 @@ function Index() {
   ];
 
   return (
-    <div className="landing-page min-h-screen font-sans text-foreground">
+    <div ref={motionRef} className="landing-page min-h-screen font-sans text-foreground">
       <PageBackground />
       {/* ============ CABEÇALHO ============ */}
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
-        <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-5 sm:px-8">
-          <a href="#" className="flex items-center gap-3">
-            <ConseltLogo className="h-9 w-auto" />
-            <span className="font-display text-lg font-extrabold text-foreground">
+      <header className="site-header fixed inset-x-0 top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
+        <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-3 px-5 sm:px-8">
+          <a href="#" className="flex shrink-0 items-center gap-2 sm:gap-3">
+            <ConseltLogo transparent priority className="h-9 w-9" />
+            <span className="font-display text-base font-extrabold text-foreground sm:text-lg">
               CONSELT
             </span>
           </a>
-          <nav className="hidden items-center gap-8 text-sm font-semibold text-muted-foreground md:flex" aria-label="Navegação principal">
+          <nav className="hidden items-center gap-4 lg:gap-8 text-sm font-semibold text-muted-foreground md:flex" aria-label="Navegação principal">
             <a href="#diferenciais" className="transition-colors hover:text-primary">Diferenciais</a>
             <a href="#sobre" className="transition-colors hover:text-primary">Automação</a>
             <a href="#confianca" className="transition-colors hover:text-primary">Experiência</a>
@@ -334,18 +340,35 @@ function Index() {
             href={waLink(WA_DEFAULT_MESSAGE)}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-sm bg-navy-950 px-4 py-2.5 text-sm font-bold text-primary-foreground transition-colors hover:bg-navy-800 sm:px-5"
+            className="hidden sm:inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-xl bg-navy-950 px-3 py-2.5 text-sm font-bold text-primary-foreground transition-colors hover:bg-navy-800 sm:px-5"
           >
             <IconWhatsApp className="h-4 w-4" />
             Fale conosco
           </a>
+          <details className="mobile-navigation" onKeyDown={(event) => {
+            if (event.key === "Escape") {
+              event.currentTarget.open = false;
+              event.currentTarget.querySelector("summary")?.focus();
+            }
+          }}>
+            <summary aria-label="Menu de navegação"><span /><span /><span /></summary>
+            <nav aria-label="Navegação mobile" onClick={(event) => {
+              if ((event.target as HTMLElement).closest("a")) event.currentTarget.parentElement?.removeAttribute("open");
+            }}>
+              <a href="#diferenciais">Diferenciais</a>
+              <a href="#sobre">Automação</a>
+              <a href="#confianca">Experiência</a>
+              <a href="#duvidas">Dúvidas</a>
+              <a className="mobile-navigation__cta" href={waLink(WA_DEFAULT_MESSAGE)} target="_blank" rel="noopener noreferrer">Fale conosco <IconWhatsApp className="h-4 w-4" /></a>
+            </nav>
+          </details>
         </div>
       </header>
 
       {/* ============ BLOCO 1 · HERO ============ */}
-      <section data-backdrop="hero" className="relative pt-18">
+      <section data-backdrop="hero" className="hero-refined relative pt-18">
         <div className="relative mx-auto grid min-h-[690px] max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.02fr_.98fr] lg:py-24">
-          <div className="animate-rise-in relative z-10 max-w-2xl">
+          <div className="relative z-10 max-w-2xl">
             <span className="inline-flex items-center border-l-2 border-blue-400 pl-3 text-xs font-bold uppercase text-blue-200 [text-shadow:_0_1px_3px_rgba(0,0,0,0.8)]">Engenharia de precisão</span>
             <h1 className="mt-7 font-display text-4xl font-extrabold leading-[1.08] text-primary-foreground sm:text-6xl [text-shadow:_0_2px_8px_rgba(0,0,0,0.85),_0_1px_3px_rgba(0,0,0,0.9)]">
               Automação residencial e comercial
@@ -356,7 +379,7 @@ function Index() {
             <p className="mt-4 max-w-xl text-base leading-relaxed text-blue-200/90 sm:text-lg [text-shadow:_0_1px_4px_rgba(0,0,0,0.8)]">
               Iluminação, clima e segurança no seu controle — <strong className="font-semibold text-primary-foreground">sem quebrar paredes.</strong>
             </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="hero-refined__actions mt-9 flex flex-col gap-3 sm:flex-row">
               <a
                 href={waLink(WA_DEFAULT_MESSAGE)}
                 target="_blank"
@@ -422,7 +445,7 @@ function Index() {
           <div className="mt-14 grid gap-5 md:grid-cols-3">
             {diferencialItems.map((item) => (
               <div
-                key={item.title}
+                key={item.title} data-motion="image"
                 className="group relative min-h-80 overflow-hidden rounded-md border border-blue-200/25 bg-navy-950 p-7 transition-transform duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02]"
               >
                 <img src={item.image} alt={item.title} aria-hidden="true" loading="eager" decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
@@ -526,13 +549,13 @@ function Index() {
                 },
               ].map((item) => (
                 <div
-                  key={item.title}
-                  className="group flex flex-col items-center justify-center text-center rounded-xl border border-border/80 bg-background/95 p-6 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/60 hover:bg-background hover:shadow-md"
+                  key={item.title} data-motion="card"
+                  className="group flex flex-col items-center justify-center text-center rounded-xl border border-border/80 bg-background/95 p-6 backdrop-blur-md shadow-sm transition-shadow duration-500 ease-out hover:shadow-[0_8px_24px_-14px_rgba(0,0,0,0.28)]"
                 >
-                  <div className="mb-3.5 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  <div className="mb-3.5 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     {item.icon}
                   </div>
-                  <h4 className="font-display text-base font-bold text-foreground transition-colors group-hover:text-primary sm:text-lg">
+                  <h4 className="font-display text-base font-bold text-foreground sm:text-lg">
                     {item.title}
                   </h4>
                   <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-muted-foreground">
@@ -546,7 +569,7 @@ function Index() {
       </section>
 
       {/* ============ BLOCO 4 · BENEFÍCIOS ============ */}
-      <section data-backdrop="benefits" className="relative py-20 sm:py-28">
+      <section data-backdrop="benefits" className="relative py-16 sm:py-20">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <SectionHeading
@@ -562,15 +585,15 @@ function Index() {
           </div>
 
           {/* Grid Bento Moderno (2 cards largos no topo + 3 cards equilibrados na base) */}
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-6">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
             {beneficioItems.map((item, index) => {
-              const isTopRow = index < 2;
+              const isTopRow = index < 3;
               return (
                 <BenefitCard
                   title={item.title}
                   key={item.title}
-                  className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-border/80 bg-card p-7 sm:p-8 shadow-xs transition-all duration-300 hover:-translate-y-1.5 hover:border-blue-400/60 hover:shadow-xl ${
-                    isTopRow ? "lg:col-span-3" : "lg:col-span-2"
+                  className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-border/80 bg-card p-5 sm:p-6 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/60 hover:shadow-lg ${
+                    isTopRow ? "lg:col-span-2" : "lg:col-span-3"
                   }`}
                 >
                   {/* Linha de brilho superior ao passar o mouse */}
@@ -581,12 +604,12 @@ function Index() {
 
                   <div>
                     {/* Topo do Card: Ícone + Tag + Número */}
-                    <div className="flex items-center justify-between">
-                      <div className="flex h-13 w-13 items-center justify-center rounded-xl bg-navy-950 text-blue-300 shadow-md transition-all duration-300 group-hover:scale-105 group-hover:bg-primary group-hover:text-primary-foreground">
-                        <item.icon className="h-6 w-6" />
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-navy-950 text-blue-300 shadow-md transition-all duration-300 group-hover:scale-105 group-hover:bg-primary group-hover:text-primary-foreground">
+                        <item.icon className="h-5 w-5" />
                       </div>
                       <div className="flex items-center gap-2.5">
-                        <span className="rounded-full bg-muted/90 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-primary border border-border/60">
+                        <span className="rounded-full bg-muted/90 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-primary border border-border/60">
                           {item.badge}
                         </span>
                         <span className="font-mono text-xs font-extrabold text-muted-foreground/40">
@@ -596,19 +619,18 @@ function Index() {
                     </div>
 
                     {/* Conteúdo */}
-                    <div className="mt-6">
-                      <h3 className="font-display text-xl font-bold text-foreground transition-colors group-hover:text-primary sm:text-2xl">
+                    <div className="mt-4">
+                      <h3 className="font-display text-lg font-bold leading-snug text-foreground transition-colors group-hover:text-primary sm:text-xl">
                         {item.title}
                       </h3>
-                      <span className="benefit-card__hint" aria-hidden="true">Passe o mouse ou foque para saber mais ↗</span>
-                      <p className="benefit-card__description mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                      <p className="benefit-card__description mt-3 text-sm leading-relaxed text-muted-foreground">
                         {item.description}
                       </p>
                     </div>
                   </div>
 
                   {/* Detalhe de rodapé do card */}
-                  <div className="benefit-card__detail mt-8 flex flex-wrap items-center gap-2 pt-4 border-t border-border/40 text-xs font-semibold text-primary/80">
+                  <div className="benefit-card__detail mt-4 flex flex-wrap items-center gap-2 pt-3 border-t border-border/40 text-xs font-semibold text-primary/80">
                     <span>Garantia CONSELT</span>
                     <span className="h-1 w-1 rounded-full bg-primary" />
                     <span className="text-muted-foreground font-normal">Excelência técnica</span>
@@ -631,7 +653,7 @@ function Index() {
 
           <div className="mt-14 grid gap-6 lg:grid-cols-[1.05fr_1fr]">
             {/* Painel de destaque · 32 anos */}
-            <div className="group relative overflow-hidden rounded-xl border border-white/25 bg-navy-950/90 p-8 shadow-lg backdrop-blur-md transition-transform duration-300 ease-out hover:scale-[1.02] sm:p-10">
+            <div data-motion="card" className="group relative overflow-hidden rounded-xl border border-white/25 bg-navy-950/90 p-8 shadow-lg backdrop-blur-md transition-transform duration-300 ease-out hover:scale-[1.02] sm:p-10">
               {/* Elementos gráficos decorativos */}
               <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full border border-blue-400/15" aria-hidden="true" />
               <div className="pointer-events-none absolute -right-10 -top-10 h-64 w-64 rounded-full border border-blue-400/25" aria-hidden="true" />
@@ -699,7 +721,7 @@ function Index() {
                 },
               ].map((card) => (
                 <div
-                  key={card.title}
+                  key={card.title} data-motion="card"
                   className="group flex flex-1 items-start gap-5 rounded-xl border border-white/70 bg-white/70 p-7 shadow-sm backdrop-blur-md transition-transform duration-300 ease-out hover:scale-[1.02] sm:p-8"
                 >
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-primary/15 bg-primary/10 text-primary">
@@ -730,53 +752,40 @@ function Index() {
       </section>
 
       {/* ============ BLOCO 6 · FAQ ============ */}
-      <section id="duvidas" data-backdrop="faq" className="relative scroll-mt-20 py-20 sm:py-28">
-        <div className="relative mx-auto max-w-3xl px-4 sm:px-6">
-          <SectionHeading
-            eyebrow="Perguntas frequentes"
-            title="Tire suas dúvidas antes de falar com a gente"
-          />
-          <div className="mt-12 divide-y divide-border border-y border-border">
+      <section id="duvidas" data-backdrop="faq" aria-labelledby="faq-title" className="faq-section relative scroll-mt-20 py-20 sm:py-28">
+        <div className="faq-section__layout mx-auto max-w-7xl px-5 sm:px-8">
+          <div className="faq-section__intro" data-motion="card">
+            <span className="faq-section__eyebrow">Perguntas frequentes</span>
+            <h2 id="faq-title" className="font-display">Tire suas dúvidas antes de falar com a gente</h2>
+            <div className="faq-section__diagram" aria-hidden="true">
+              <div className="faq-section__orbit" />
+              <div className="faq-section__core"><IconModules className="h-8 w-8" /></div>
+              <span className="faq-section__node faq-section__node--one"><IconLight className="h-5 w-5" /></span>
+              <span className="faq-section__node faq-section__node--two"><IconShield className="h-5 w-5" /></span>
+              <span className="faq-section__node faq-section__node--three"><IconPresence className="h-5 w-5" /></span>
+            </div>
+          </div>
+          <div className="faq-section__questions">
             {faqs.map((faq, index) => {
               const isOpen = openFaq === index;
               return (
-                <div
-                  key={faq.question}
-                  className={
-                    isOpen
-                      ? "border-l-2 border-primary bg-muted transition-colors"
-                      : "border-l-2 border-transparent bg-background transition-colors hover:bg-muted"
-                  }
-                >
-                  <button
-                    type="button"
-                    onClick={() => setOpenFaq(isOpen ? null : index)}
-                    aria-expanded={isOpen}
-                    className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
-                  >
-                    <span className="font-display text-base font-semibold text-foreground">
-                      {faq.question}
-                    </span>
-                    <IconChevron
-                      className={
-                        isOpen
-                          ? "h-5 w-5 shrink-0 text-primary transition-transform duration-300 rotate-180"
-                          : "h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300"
-                      }
-                    />
-                  </button>
-                  <div
-                    className={
-                      isOpen
-                        ? "grid grid-rows-[1fr] transition-all duration-300 ease-out"
-                        : "grid grid-rows-[0fr] transition-all duration-300 ease-out"
-                    }
-                  >
-                    <div className="overflow-hidden">
-                      <p className="px-6 pb-5 text-sm leading-relaxed text-muted-foreground">
-                        {faq.answer}
-                      </p>
-                    </div>
+                <div key={faq.question} data-motion="row" data-open={isOpen} className="faq-section__item">
+                  <h3>
+                    <button
+                      id={`faq-question-${index}`}
+                      type="button"
+                      onClick={() => setOpenFaq(isOpen ? null : index)}
+                      aria-expanded={isOpen}
+                      aria-controls={`faq-answer-${index}`}
+                      className="faq-section__trigger"
+                    >
+                      <span className="faq-section__number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                      <span className="faq-section__question">{faq.question}</span>
+                      <span className="faq-section__toggle" aria-hidden="true"><IconChevron className="h-4 w-4" /></span>
+                    </button>
+                  </h3>
+                  <div id={`faq-answer-${index}`} role="region" aria-labelledby={`faq-question-${index}`} aria-hidden={!isOpen} inert={!isOpen} className="faq-section__answer">
+                    <div><p>{faq.answer}</p></div>
                   </div>
                 </div>
               );
@@ -788,14 +797,14 @@ function Index() {
       {/* ============ BLOCO 7 · CHAMADA FINAL (WHATSAPP) ============ */}
       <section data-backdrop="cta" aria-labelledby="closing-title" className="closing-cta relative">
         <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <div className="closing-cta__brand">
-            <ConseltLogo className="h-10 w-auto" />
+          <div data-motion="detail" className="closing-cta__brand">
+            <ConseltLogo transparent className="h-10 w-10" />
             <span className="text-xs font-bold uppercase tracking-widest text-primary">CONSELT · Engenharia</span>
           </div>
-          <h2 id="closing-title" className="mt-8 font-display text-4xl font-extrabold leading-tight tracking-tight text-navy-950 sm:text-5xl">
-            Pronto para viver o <span className="text-primary">futuro</span> hoje?
+          <h2 id="closing-title" className="mt-8 font-display text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl">
+            Pronto para viver o <span className="text-blue-400">futuro</span> hoje?
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-blue-200 sm:text-lg">
             Receba uma proposta personalizada para sua casa ou escritório.
           </p>
           <div className="mt-10">
@@ -816,7 +825,7 @@ function Index() {
       <footer data-backdrop="footer" className="relative py-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-5 px-4 text-center sm:px-6">
           <div className="flex items-center gap-3">
-            <ConseltLogo className="h-8 w-auto" />
+            <ConseltLogo transparent className="h-8 w-8" />
             <span className="font-display text-base font-extrabold text-foreground">
               CONSELT
             </span>
