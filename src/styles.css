@@ -109,13 +109,14 @@
   }
 }
 
-/* ---- Motion ---- */
-@keyframes rise-in {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Entrances are progressively enhanced by usePageMotion; no layout changes. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-motion-pending] { opacity: 0; }
+  .page-background__photo[data-motion-pending] { opacity: .45; }
 }
-
-.animate-rise-in { animation: rise-in 0.55s ease-out both; }
+@media print {
+  [data-motion-pending] { opacity: 1 !important; }
+}
 
 /* ---- Utilities ---- */
 @utility text-gradient-brand {
@@ -180,7 +181,14 @@
       #a6bccb calc(var(--benefits-top) - var(--blend) * .15),
       #edf3f6 calc(var(--benefits-top) + var(--blend) * .4),
       #f6f9fb calc(var(--benefits-top) + var(--blend)),
-      #f6f9fb 100%);
+      #f6f9fb calc(var(--cta-top) - var(--blend)),
+      #d9e5ec calc(var(--cta-top) - var(--blend) * .4),
+      #57758e calc(var(--cta-top) + var(--blend) * .25),
+      var(--navy-950) calc(var(--cta-top) + var(--blend)),
+      var(--navy-950) calc(var(--footer-top) - var(--blend)),
+      #688298 calc(var(--footer-top) - var(--blend) * .45),
+      #e3ecf2 calc(var(--footer-top) + var(--blend) * .05),
+      #f6f9fb calc(var(--footer-top) + 36px));
 }
 
 .page-background__photo {
@@ -223,8 +231,7 @@
 
 .page-background__cta {
   top: var(--cta-top);
-  height: calc(var(--cta-height) + var(--footer-height, 243px));
-  mask-image: radial-gradient(ellipse 85% 48% at 75% 42%, #000 0%, #0009 40%, transparent 100%);
+  height: var(--cta-height);
 }
 
 .page-background__cta img { opacity: .25; }
