@@ -38,5 +38,5 @@ export function BenefitCard({ children, className, title }: { children: ReactNod
       motion.removeEventListener("change", configure);
     };
   }, []);
-  return <article ref={ref} tabIndex={0} aria-label={title} className={`benefit-card ${className}`}>{children}</article>;
+  return <article data-motion="card" ref={ref} tabIndex={0} aria-label={title} className={`benefit-card ${className}`}>{children}</article>;
 }

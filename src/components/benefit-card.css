@@ -5,13 +5,6 @@
   transform: translateY(0);
   transition: opacity 280ms ease-out, transform 280ms ease-out;
 }
-.benefit-card__hint { display: none; }
-.benefit-card[data-reveal-mode="hover"] .benefit-card__hint {
-  display: block;
-  margin-top: .75rem;
-  font-size: .75rem;
-  color: var(--primary);
-}
 .benefit-card[data-reveal-mode="hover"]:not(:hover):not(:focus-within) .benefit-card__description,
 .benefit-card[data-reveal-mode="hover"]:not(:hover):not(:focus-within) .benefit-card__detail,
 .benefit-card[data-reveal-mode="scroll"]:not([data-revealed]):not(:focus-within) .benefit-card__description,

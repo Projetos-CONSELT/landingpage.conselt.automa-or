@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import heroCameraPhone from "@/assets/hero-camera-phone.jpg";
-import ctaCamera from "@/assets/cta-camera.jpg";
+import heroCameraPhone from "@/assets/hero-camera-phone.webp";
+import ctaCamera from "@/assets/cta-camera.webp";
 import livingLighting from "@/assets/smart-living-room.png";
 import ufuImg from "@/assets/ufu-engenharia.png.asset.json";
 
@@ -33,17 +33,17 @@ export function PageBackground() {
 
   return (
     <div ref={ref} className="page-background" aria-hidden="true">
-      <div className="page-background__photo page-background__hero">
-        <img src={heroCameraPhone} alt="" fetchPriority="high" />
+      <div data-motion="ambient" className="page-background__photo page-background__hero">
+        <img src={heroCameraPhone} alt="" loading="eager" fetchPriority="high" decoding="async" width={1920} height={1088} />
       </div>
-      <div className="page-background__photo page-background__living">
+      <div data-motion="ambient" className="page-background__photo page-background__living">
         <img src={livingLighting} alt="" />
       </div>
-      <div className="page-background__photo page-background__trust">
+      <div data-motion="ambient" className="page-background__photo page-background__trust">
         <img src={ufuImg.url} alt="" loading="lazy" />
       </div>
-      <div className="page-background__photo page-background__cta">
-        <img src={ctaCamera} alt="" loading="lazy" width={1920} height={1088} />
+      <div data-motion="ambient" className="page-background__photo page-background__cta">
+        <img src={ctaCamera} alt="" loading="eager" fetchPriority="low" decoding="async" width={1920} height={1088} />
       </div>
     </div>
   );
