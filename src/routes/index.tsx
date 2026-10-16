@@ -756,7 +756,7 @@ function Index() {
         <div className="faq-section__layout mx-auto max-w-7xl px-5 sm:px-8">
           <div className="faq-section__intro" data-motion="card">
             <span className="faq-section__eyebrow">Perguntas frequentes</span>
-            <h2 id="faq-title" className="font-display">Tire suas dúvidas antes de falar com a gente</h2>
+            <h2 id="faq-title" className="font-display">Dúvidas frequentes</h2>
             <div className="faq-section__diagram" aria-hidden="true">
               <div className="faq-section__orbit" />
               <div className="faq-section__core"><IconModules className="h-8 w-8" /></div>
