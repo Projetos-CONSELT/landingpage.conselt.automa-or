@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AnalyticsConsent } from "@/analytics/Consent";
 import "@/components/header-refinements.css";
 import heroPreload from "@/assets/hero-camera-phone.webp";
 import "@/components/faq-section.css";
@@ -321,6 +322,7 @@ function Index() {
   return (
     <div ref={motionRef} className="landing-page min-h-screen font-sans text-foreground">
       <PageBackground />
+      <AnalyticsConsent />
       {/* ============ CABEÇALHO ============ */}
       <header className="site-header fixed inset-x-0 top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
         <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-3 px-5 sm:px-8">
@@ -337,6 +339,7 @@ function Index() {
             <a href="#duvidas" className="transition-colors hover:text-primary">Dúvidas</a>
           </nav>
           <a
+            data-analytics-id="header-whatsapp"
             href={waLink(WA_DEFAULT_MESSAGE)}
             target="_blank"
             rel="noopener noreferrer"
@@ -359,7 +362,7 @@ function Index() {
               <a href="#sobre">Automação</a>
               <a href="#confianca">Experiência</a>
               <a href="#duvidas">Dúvidas</a>
-              <a className="mobile-navigation__cta" href={waLink(WA_DEFAULT_MESSAGE)} target="_blank" rel="noopener noreferrer">Fale conosco <IconWhatsApp className="h-4 w-4" /></a>
+              <a data-analytics-id="menu-mobile-whatsapp" className="mobile-navigation__cta" href={waLink(WA_DEFAULT_MESSAGE)} target="_blank" rel="noopener noreferrer">Fale conosco <IconWhatsApp className="h-4 w-4" /></a>
             </nav>
           </details>
         </div>
@@ -381,6 +384,7 @@ function Index() {
             </p>
             <div className="hero-refined__actions mt-9 flex flex-col gap-3 sm:flex-row">
               <a
+                data-analytics-id="hero-automatizar"
                 href={waLink(WA_DEFAULT_MESSAGE)}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -390,6 +394,7 @@ function Index() {
                 Quero automatizar meu espaço
               </a>
               <a
+                data-analytics-id="hero-conhecer"
                 href="#sobre"
                 className="inline-flex w-full items-center justify-center rounded-xl border border-blue-200/40 bg-transparent px-8 py-3.5 text-base font-semibold text-blue-200 transition-colors hover:border-blue-200 hover:text-primary-foreground sm:w-auto"
               >
@@ -772,6 +777,7 @@ function Index() {
                 <div key={faq.question} data-motion="row" data-open={isOpen} className="faq-section__item">
                   <h3>
                     <button
+                      data-analytics-id={`faq-pergunta-${index + 1}`}
                       id={`faq-question-${index}`}
                       type="button"
                       onClick={() => setOpenFaq(isOpen ? null : index)}
@@ -809,6 +815,7 @@ function Index() {
           </p>
           <div className="mt-10">
             <a
+              data-analytics-id="chamada-final-whatsapp"
               href={waLink(WA_DEFAULT_MESSAGE)}
               target="_blank"
               rel="noopener noreferrer"
@@ -835,6 +842,7 @@ function Index() {
           </p>
           <div className="flex items-center gap-5">
             <a
+              data-analytics-id="footer-whatsapp"
               href={waLink("Olá! Vim pelo site da CONSELT e quero saber mais sobre automação residencial.")}
               target="_blank"
               rel="noopener noreferrer"
@@ -846,6 +854,7 @@ function Index() {
               WhatsApp
             </a>
             <a
+              data-analytics-id="footer-instagram"
               href="https://instagram.com/conselt.time"
               target="_blank"
               rel="noopener noreferrer"
