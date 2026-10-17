@@ -62,7 +62,9 @@ async function rpc(c: Config, name: string, args: unknown) {
     signal: AbortSignal.timeout(10000),
   });
   if (!response.ok) throw new Error("Analytics database unavailable");
-  return response.json();
+  // PostgREST can return an empty body for functions declared RETURNS void.
+  const body = await response.text();
+  return body.trim() ? JSON.parse(body) : null;
 }
 async function sign(c: Config, value: string) {
   const key = await crypto.subtle.importKey(
