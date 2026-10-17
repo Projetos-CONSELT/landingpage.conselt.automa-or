@@ -1,0 +1,66 @@
+.analytics-consent {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  z-index: 90;
+  color: #123655;
+  font:
+    14px/1.5 system-ui,
+    sans-serif;
+  max-width: calc(100vw - 32px);
+}
+.analytics-preferences,
+.analytics-consent-panel {
+  background: #fff;
+  border: 1px solid #cbdbe6;
+  box-shadow: 0 8px 32px #092f4620;
+  border-radius: 16px;
+}
+.analytics-preferences {
+  padding: 8px 14px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.analytics-consent-panel {
+  width: 460px;
+  max-width: 100%;
+  max-height: 70dvh;
+  overflow: auto;
+  padding: 20px;
+}
+.analytics-consent-panel h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+.analytics-consent-panel p {
+  margin: 8px 0;
+}
+.analytics-consent-panel summary {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.analytics-consent-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.analytics-consent-actions button {
+  border: 1px solid #174779;
+  border-radius: 8px;
+  padding: 9px 12px;
+  cursor: pointer;
+  background: #f1f6fa;
+  color: #123655;
+  font-weight: 600;
+}
+.analytics-delete {
+  margin-top: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.analytics-consent button:focus-visible {
+  outline: 3px solid #1585b8;
+  outline-offset: 3px;
+}

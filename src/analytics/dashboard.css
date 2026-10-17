@@ -1,0 +1,203 @@
+.analytics-admin {
+  min-height: 100vh;
+  background: #f2f6fa;
+  color: #15344d;
+  padding: 48px max(24px, calc((100vw - 1240px) / 2));
+  font:
+    15px/1.55 system-ui,
+    sans-serif;
+}
+.analytics-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 32px;
+}
+.analytics-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #397596;
+  font-weight: 700;
+}
+.analytics-admin h1 {
+  font-size: 40px;
+  letter-spacing: -0.04em;
+  font-weight: 750;
+  margin: 6px 0;
+}
+.analytics-admin h2 {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+.analytics-admin p {
+  color: #536b7e;
+  margin: 8px 0 20px;
+}
+.analytics-admin a {
+  color: #145b85;
+}
+.analytics-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+.analytics-admin button,
+.analytics-admin select {
+  border: 1px solid #cad8e3;
+  border-radius: 9px;
+  background: white;
+  padding: 9px 14px;
+  color: #154a70;
+  cursor: pointer;
+}
+.analytics-admin button:hover {
+  background: #eaf2f8;
+}
+.analytics-admin button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+.analytics-admin :focus-visible {
+  outline: 3px solid #2188b5;
+  outline-offset: 3px;
+}
+.analytics-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.analytics-kpi,
+.analytics-panel {
+  background: #fff;
+  border: 1px solid #dce6ed;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 6px 24px #193d5905;
+}
+.analytics-kpi span {
+  font-size: 12px;
+  color: #5c7180;
+}
+.analytics-kpi strong {
+  display: block;
+  font-size: 29px;
+  letter-spacing: -0.03em;
+  margin-top: 10px;
+}
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.analytics-panel {
+  margin-bottom: 20px;
+  min-width: 0;
+}
+.analytics-grid .analytics-panel {
+  margin-bottom: 0;
+}
+.analytics-grid {
+  margin-bottom: 20px;
+}
+.analytics-bars > div {
+  margin-top: 15px;
+}
+.analytics-bars > div > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 13px;
+}
+.analytics-track {
+  height: 7px;
+  background: #edf3f7;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+.analytics-track span {
+  display: block;
+  height: 100%;
+  background: #247a9b;
+  border-radius: 10px;
+}
+.analytics-admin .analytics-note {
+  font-size: 12px;
+  color: #657d8d;
+}
+.analytics-table {
+  overflow: auto;
+}
+.analytics-table table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13px;
+}
+.analytics-table th,
+.analytics-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e7eef3;
+  white-space: nowrap;
+}
+.analytics-table th {
+  color: #587386;
+  font-size: 12px;
+}
+.analytics-login {
+  max-width: 460px;
+  margin: 48px auto;
+}
+.analytics-login label {
+  display: block;
+  margin-top: 16px;
+}
+.analytics-login input {
+  display: block;
+  width: 100%;
+  border: 1px solid #bdd0df;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 5px;
+}
+.analytics-login button {
+  margin-top: 20px;
+  width: 100%;
+  background: #123f64;
+  color: white;
+}
+.analytics-admin .analytics-alert {
+  border: 1px solid #efceaf;
+  background: #fff8ee;
+  padding: 16px;
+  border-radius: 12px;
+  color: #794c27;
+}
+@media (max-width: 800px) {
+  .analytics-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+  .analytics-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .analytics-admin {
+    padding: 28px 16px;
+  }
+  .analytics-kpi {
+    padding: 18px;
+  }
+  .analytics-kpi strong {
+    font-size: 25px;
+  }
+  .analytics-panel {
+    padding: 20px;
+  }
+}
