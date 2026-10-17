@@ -148,7 +148,8 @@ try {
     calls.push({ url, options });
     if (String(url).endsWith("/auth/v1/user")) return Response.json({ id: "not-admin" });
     if (String(url).endsWith("analytics_rate_limit")) return Response.json(true);
-    return Response.json(null);
+    // Real Supabase void RPCs return no JSON, including analytics_start/collect/forget.
+    return new Response(null, { status: 204 });
   };
   try {
     await check("coleta entre subdomínios permite somente a landing autorizada", async () => {
